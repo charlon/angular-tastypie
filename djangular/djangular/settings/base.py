@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     # 'app_name',
     'compressor',
     'templatetag_handlebars',
+    'api',
 )
 
 MIDDLEWARE_CLASSES = (
