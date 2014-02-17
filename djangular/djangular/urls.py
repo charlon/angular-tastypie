@@ -11,5 +11,5 @@ urlpatterns = patterns('',
     #url(r'^admin/', include(admin.site.urls)),
     
     # include the scaffolded application
-    #url(r'^', include('app_name.urls')),
+    url(r'^', include('client.urls')),
 )

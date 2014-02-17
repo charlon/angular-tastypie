@@ -10,6 +10,8 @@
         <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
         <meta http-equiv="cleartype" content="on">
         
+        {% load staticfiles %}
+        
         <!-- favicon and mobile device icons-->
         <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{% static "ico/apple-touch-icon-144x144-precomposed.png" %}">
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{% static "ico/apple-touch-icon-114x114-precomposed.png" %}">
@@ -63,13 +65,7 @@
                 <div class="page-header">
                    <h1>Scaffold Boilerplate</h1>
                 </div>
-                
-                <ul>
-                    <li><a href="/">link</a></li>
-                    <li><a href="/">link</a></li>
-                    <li><a href="/">link</a></li>
-                </ul>
-                
+                           
                 <!-- add your site or application content here -->
                 <div id="content">
                     {% block content %}{% endblock %}
@@ -106,8 +102,8 @@
         <!-- javascript -->
         {% compress js %}
             <!-- angularjs for js apps -->
-            <!--<script src="{% static "js/vendor/angular-1.2.13.min.js" %}"></script>
-            <script src="{% static "js/vendor/angular-resource-1.2.13.min.js" %}"></script>-->
+            <script src="{% static "js/vendor/angular-1.2.13.min.js" %}"></script>
+            <script src="{% static "js/vendor/angular-resource-1.2.13.min.js" %}"></script>
             <script src="{% static "js/vendor/bootstrap-3.1.1.min.js" %}"></script>
             <script src="{% static "js/vendor/holder-2.3.1.min.js" %}"></script>
         {% endcompress %}
