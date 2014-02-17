@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'compressor',
     'templatetag_handlebars',
     'api',
+    'client',
 )
 
 MIDDLEWARE_CLASSES = (
