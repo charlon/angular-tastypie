@@ -5,18 +5,18 @@ var demoApp = angular.module('demoApp', ['ngResource']);
 demoApp.config(function ($routeProvider, $locationProvider) {
     
     //enable html5 pushstate
-    $locationProvider.html5Mode(true);
+    //$locationProvider.html5Mode(true);
     
     $routeProvider
         .when('/',
             {
-                controller: 'SpaceController',
-                templateUrl: '/views/spaces.html'
+                controller: 'SimpleController',
+                templateUrl: '/static/client/views/home.html'
             })
         .when('/about',
             {
                 controller: 'SimpleController',
-                templateUrl: '/views/about.html'
+                templateUrl: '/static/client/views/about.html'
             })
         .otherwise({ redirectTo: '/' });
         

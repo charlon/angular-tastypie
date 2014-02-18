@@ -6,24 +6,24 @@
 
 
     <nav class="navbar navbar-default" role="navigation">
-        <a href="/" class="navbar-brand">Spaces</a>
+        <a href="/" class="navbar-brand">Home</a>
         <ul class="nav navbar-nav">
-          <li><a href="/about">About</a></li>
+          <li><a href="#/about">About</a></li>
         </ul>
     </nav>
     
     <h1>AngularJS</h1>
 
      
-    <!-- placeholder for views (i.e. {{outlet}} in ember) -->
+    <!-- placeholder for views -->
     <div data-ng-view=""></div>
-
-
+    
+    
 {% endblock %}
 
 
 {% block extra_js %}
-    <script src="{% static "js/client/app.js" %}"></script>
-    <script src="{% static "js/client/controllers.js" %}"></script>
+    <script src="{% static "client/app.js" %}"></script>
+    <script src="{% static "client/controllers.js" %}"></script>
 {% endblock %}
 
