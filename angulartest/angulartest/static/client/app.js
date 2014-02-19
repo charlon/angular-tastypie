@@ -18,6 +18,11 @@ demoApp.config(function ($routeProvider, $locationProvider) {
                 controller: 'SimpleController',
                 templateUrl: '/static/client/views/about.html'
             })
+        .when('/test',
+            {
+                controller: 'SimpleController',
+                templateUrl: '/static/client/views/test.html'
+            })
         .otherwise({ redirectTo: '/' });
         
 });

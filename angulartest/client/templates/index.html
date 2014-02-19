@@ -4,23 +4,20 @@
 
 {% block content %}
 
-
+    <!-- application navigation -->
     <nav class="navbar navbar-default" role="navigation">
         <a href="/" class="navbar-brand">Home</a>
         <ul class="nav navbar-nav">
-          <li><a href="#/about">About</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/test">Test</a></li>
         </ul>
     </nav>
-    
-    <h1>AngularJS</h1>
-
-     
+         
     <!-- placeholder for views -->
     <div data-ng-view=""></div>
     
     
 {% endblock %}
-
 
 {% block extra_js %}
     <script src="{% static "client/app.js" %}"></script>
