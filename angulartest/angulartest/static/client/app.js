@@ -1,11 +1,11 @@
 // Application Module
-var demoApp = angular.module('demoApp', ['ngResource']);
+var demoApp = angular.module('demoApp', ['ngResource', 'ngRoute']);
 
 // Routes
 demoApp.config(function ($routeProvider, $locationProvider) {
     
     //enable html5 pushstate
-    //$locationProvider.html5Mode(true);
+    $locationProvider.html5Mode(true);
     
     $routeProvider
         .when('/',
