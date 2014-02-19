@@ -55,9 +55,9 @@ MIDDLEWARE_CLASSES = (
     'django_mobileesp.middleware.UserAgentDetectionMiddleware',
 )
 
-ROOT_URLCONF = 'djangular.urls'
+ROOT_URLCONF = 'angulartest.urls'
 
-WSGI_APPLICATION = 'djangular.wsgi.application'
+WSGI_APPLICATION = 'angulartest.wsgi.application'
 
 
 # Database
