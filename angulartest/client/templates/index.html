@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block content %}
+
+
+    <nav class="navbar navbar-default" role="navigation">
+        <a href="/" class="navbar-brand">Home</a>
+        <ul class="nav navbar-nav">
+          <li><a href="#/about">About</a></li>
+        </ul>
+    </nav>
+    
+    <h1>AngularJS</h1>
+
+     
+    <!-- placeholder for views -->
+    <div data-ng-view=""></div>
+    
+    
+{% endblock %}
+
+
+{% block extra_js %}
+    <script src="{% static "client/app.js" %}"></script>
+    <script src="{% static "client/controllers.js" %}"></script>
+{% endblock %}
+

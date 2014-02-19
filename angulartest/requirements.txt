@@ -1,0 +1,6 @@
+django
+django-compressor
+django-templatetag-handlebars
+django-tastypie
+
+-e git+https://github.com/abztrakt/django-mobileesp/#egg=django_mobileesp
