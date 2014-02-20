@@ -5,5 +5,12 @@ from django.conf.urls import patterns, include, url
 
 # example api routes
 urlpatterns = patterns('',
-    url(r'', 'api.views.home'),
+
+    # /api/
+    url(r'^', 'api.views.hello'),
+    
+    # /api/v1
+    url(r'^/v1', 'api.views.world'),
+    
+    
 )
