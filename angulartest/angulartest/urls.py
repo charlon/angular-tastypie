@@ -7,9 +7,12 @@ urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'mysite.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
-
-    #url(r'^admin/', include(admin.site.urls)),
+    # url(r'^admin/', include(admin.site.urls)),
     
-    # include the scaffolded application
-    url(r'^', include('client.urls')),
+    
+    # include the client app
+    url(r'', include('client.urls')),
+    
+    # include the api app
+    url(r'^api/', include('api.urls')),
 )
