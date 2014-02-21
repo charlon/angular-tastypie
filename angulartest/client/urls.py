@@ -4,6 +4,8 @@ from django.conf.urls import patterns, include, url
 urlpatterns = patterns('',
     
     # routing for js app
+    
+    # matchin anything after / and route through the angular client app
     url(r'^', 'client.views.home'),
     
 )
