@@ -11,17 +11,17 @@ demoApp.config(function ($routeProvider, $locationProvider) {
         .when('/',
             {
                 controller: 'SimpleController',
-                templateUrl: '/static/client/views/home.html'
+                templateUrl: '/static/client/partials/home.html'
             })
         .when('/about',
             {
                 controller: 'SimpleController',
-                templateUrl: '/static/client/views/about.html'
+                templateUrl: '/static/client/partials/about.html'
             })
         .when('/test',
             {
                 controller: 'SimpleController',
-                templateUrl: '/static/client/views/test.html'
+                templateUrl: '/static/client/partials/test.html'
             })
         .otherwise({ redirectTo: '/' });
         
