@@ -6,5 +6,5 @@ from django.shortcuts import render_to_response
 def hello(request, template_name="hello.html"):
     return render_to_response(template_name, context_instance=RequestContext(request))
     
-def veeone(request, template_name="world.html"):
+def world(request, template_name="world.html"):
     return render_to_response(template_name, context_instance=RequestContext(request))

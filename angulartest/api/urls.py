@@ -5,12 +5,14 @@ from django.conf.urls import patterns, include, url
 
 # example api routes
 urlpatterns = patterns('',
-
+    
+    # mocked api routing 
+    
     # /api/
-    url(r'^', 'api.views.hello'),
+    url(r'^$', 'api.views.hello'),
     
     # /api/v1
-    url(r'^/v1', 'api.views.world'),
+    url(r'^v1/', 'api.views.world'),
     
     
 )
