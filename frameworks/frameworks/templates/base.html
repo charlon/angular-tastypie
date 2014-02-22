@@ -62,9 +62,19 @@
             <!-- begin page content -->
             <div class="container">
                 
-                <div class="page-header">
-                   <h1>Angular-Tastypie</h1>
+                <div>
+                   <h1>Framework Comparison</h1>
                 </div>
+                
+                <nav class="navbar navbar-default" role="navigation">
+                    <a href="/" class="navbar-brand">Home</a>
+                    <ul class="nav navbar-nav">
+                      <li><a href="/">Angular</a></li>
+                      <li><a href="/backbone">Backbone</a></li>
+                      <li><a href="/hybrid">Hybrid</a></li>
+                      <li><a href="/pjax">PJAX</a></li>
+                    </ul>
+                </nav>
                            
                 <!-- add your site or application content here -->
                 <div id="content">
@@ -82,7 +92,7 @@
                 {% if request.is_mobile %}
                 <p class="text-muted credit">Courtesy of <a href="">Charlon</a> and <a href="">Craig</a>. UW-IT ACA</p>
                 {% else %}
-                <p class="text-muted credit">Courtesy of <a href="">Charlon Palacay</a> and <a href="">Craig Stimmel</a>. UW-IT ACA</p>
+                <p class="text-muted credit">Scaffold courtesy of <a href="">Charlon Palacay</a> and <a href="">Craig Stimmel</a>. UW-IT ACA</p>
                 {% endif %}
             </div>
         </div>
@@ -101,10 +111,6 @@
                 
         <!-- javascript -->
         {% compress js %}
-            <!-- angularjs for js apps -->
-            <script src="{% static "js/vendor/angular-1.2.13.min.js" %}"></script>
-            <script src="{% static "js/vendor/angular-route-1.2.13.min.js" %}"></script>
-            <script src="{% static "js/vendor/angular-resource-1.2.13.min.js" %}"></script>
             <script src="{% static "js/vendor/bootstrap-3.1.1.min.js" %}"></script>
             <script src="{% static "js/vendor/holder-2.3.1.min.js" %}"></script>
         {% endcompress %}
