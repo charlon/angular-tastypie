@@ -8,11 +8,10 @@ urlpatterns = patterns('',
     
     # mocked api routing 
     
-    # /api/
-    url(r'^$', 'api.views.hello'),
+    # /api/v1
+    url(r'^/v1', 'api.views.world'),
     
-    # /api/v1/
-    url(r'^v1/', 'api.views.world'),
-    
+    # /api
+    url(r'^', 'api.views.hello'),
     
 )
