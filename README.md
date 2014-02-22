@@ -18,6 +18,7 @@ Turn the cloned repository into a virtualenv.
     $ cd frameworks-comparison
     $ source bin/activate
     $ cd frameworks
+    $ pip install -r requirements.txt
     
 Server
 ------
