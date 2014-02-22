@@ -5,7 +5,7 @@ urlpatterns = patterns('',
     
     # routing for angular app
     
-    # /angular/
-    url(r'^$', 'angular.views.app'),
+    # /angular/anything
+    url(r'^', 'angular.views.app'),
     
 )
