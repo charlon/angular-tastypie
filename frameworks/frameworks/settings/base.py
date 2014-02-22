@@ -37,11 +37,12 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
-    # 'app_name',
+    #libs
     'compressor',
-    'templatetag_handlebars',
+    
+    #apps
     'api',
-    'client',
+    'angular',
 )
 
 MIDDLEWARE_CLASSES = (

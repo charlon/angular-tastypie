@@ -8,7 +8,7 @@ urlpatterns = patterns('',
     url(r'^api/', include('api.urls')),
         
     # include the client app "/"
-    url(r'^', include('client.urls')),
+    url(r'^', include('angular.urls')),
     
     
 )
