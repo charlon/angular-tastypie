@@ -17,6 +17,11 @@ Turn the cloned repository into a virtualenv.
     $ virtualenv frameworks-comparison
     $ cd frameworks-comparison
     $ source bin/activate
+
+**Dependencies:**
+
+Install the requirements
+
     $ cd frameworks
     $ pip install -r requirements.txt
     
