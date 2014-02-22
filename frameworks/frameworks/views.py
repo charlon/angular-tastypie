@@ -3,6 +3,5 @@ from django.template import RequestContext
 from django.shortcuts import render_to_response
 
 # Create your views here.
-def app(request, template_name="angular.html"):
-
+def index(request, template_name="index.html"):
     return render_to_response(template_name, context_instance=RequestContext(request))

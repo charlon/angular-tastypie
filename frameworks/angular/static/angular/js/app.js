@@ -8,21 +8,21 @@ demoApp.config(function ($routeProvider, $locationProvider) {
     $locationProvider.html5Mode(true);
     
     $routeProvider
-        .when('/',
+        .when('/angular',
             {
                 controller: 'SimpleController',
                 templateUrl: '/static/angular/partials/home.html'
             })
-        .when('/about',
+        .when('/angular/about',
             {
                 controller: 'SimpleController',
                 templateUrl: '/static/angular/partials/about.html'
             })
-        .when('/test',
+        .when('/angular/test',
             {
                 controller: 'SimpleController',
                 templateUrl: '/static/angular/partials/test.html'
             })
-        .otherwise({ redirectTo: '/' });
+        .otherwise({ redirectTo: '/angular' });
         
 });

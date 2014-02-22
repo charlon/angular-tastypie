@@ -11,7 +11,7 @@ urlpatterns = patterns('',
     # /api/
     url(r'^$', 'api.views.hello'),
     
-    # /api/v1
+    # /api/v1/
     url(r'^v1/', 'api.views.world'),
     
     
