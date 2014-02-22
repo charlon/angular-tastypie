@@ -39,6 +39,8 @@ INSTALLED_APPS = (
     
     #libs
     'compressor',
+    'tastypie',
+    'rest_framework',
     
     #apps
     'api',
