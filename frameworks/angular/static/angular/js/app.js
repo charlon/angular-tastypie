@@ -26,3 +26,11 @@ demoApp.config(function ($routeProvider, $locationProvider) {
         .otherwise({ redirectTo: '/angular' });
         
 });
+
+// stop built-in interception of clicks ( clicking on / won't go anywhere )
+// http://stackoverflow.com/questions/16755240/external-links-in-angular-app
+/*
+demoApp.run(function($location, $rootElement) {
+    $rootElement.off('click');
+});
+*/
