@@ -8,7 +8,7 @@ Installation
 
 **Github**
 
-    $ git clone git@bitbucket.org:charlonpalacay/frameworks-comparison.git
+    $ git clone git@github.com:charlon/frameworks-comparison.git
 
 **Virtualenv:**
 
