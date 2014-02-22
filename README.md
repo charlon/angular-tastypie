@@ -3,6 +3,22 @@ frameworks-comparison
 
 Django project that serves a REST API using Tastypie. For the clients, a comparison of various client-side js applications that consumes the API. Going to enable PushState across all the comparison apps.
 
+Installation
+------------
+
+**Github**
+
+    $ git clone git@bitbucket.org:charlonpalacay/frameworks-comparison.git
+
+**Virtualenv:**
+
+Turn the cloned repository into a virtualenv.
+
+    $ virtualenv frameworks-comparison
+    $ cd frameworks-comparison
+    $ source bin/activate
+    $ cd frameworks
+    
 Server
 ------
 
