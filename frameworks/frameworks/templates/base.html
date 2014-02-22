@@ -11,6 +11,7 @@
         <meta http-equiv="cleartype" content="on">
         
         {% load staticfiles %}
+        {% load compress %}
         
         <!-- favicon and mobile device icons-->
         <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{% static "ico/apple-touch-icon-144x144-precomposed.png" %}">
@@ -32,23 +33,22 @@
         -->
     
         <!-- add google/web fonts if needed -->
-        
-        {% load compress %}
-        
+       
         <!-- normalize or bootstrap and mobile-first styles -->
         {% compress css %}
             <!--<link rel="stylesheet" href="{% static "css/vendor/normalize-2.1.3.css" %}">-->
             <link rel="stylesheet" href="{% static "css/vendor/bootstrap-3.1.1.min.css" %}">
             <link rel="stylesheet" href="{% static "css/vendor/font-awesome-4.0.3.min.css" %}">
             <link rel="stylesheet" href="{% static "css/mobile.less" %}" type="text/less">
+            
+            {% if not request.is_mobile and not request.is_tablet %}
+            <link rel="stylesheet" href="{% static "css/desktop.less" %}" type="text/less">
+            {% endif %}
+            
         {% endcompress %}
         
-        {% if not request.is_mobile and not request.is_tablet %}
-        <!-- desktop styles -->
-        {% compress css %}
-            <link rel="stylesheet" href="{% static "css/desktop.less" %}" type="text/less">
-        {% endcompress %}
-        {% endif %}
+        <!-- application styles -->
+        {% block app_css %}{% endblock %}
         
         <!-- modernizr -->                
         <script src="{% static "js/vendor/modernizr-2.6.2.min.js" %}"></script>
@@ -62,9 +62,7 @@
             <!-- begin page content -->
             <div class="container">
                 
-                <div>
-                   <h1>Frameworks</h1>
-                </div>
+                <h1>Frameworks</h1>
                 
                 <nav class="navbar navbar-default" role="navigation">
                     <a href="/" class="navbar-brand">Home</a>
@@ -106,18 +104,16 @@
         
         <!-- jquery -->
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
-        
         <script>window.jQuery || document.write('<script src="{% static "js/vendor/jquery-2.1.0.min.js" %}"><\/script>')</script>
                 
-        <!-- javascript -->
+        <!-- global javascript -->
         {% compress js %}
             <script src="{% static "js/vendor/bootstrap-3.1.1.min.js" %}"></script>
             <script src="{% static "js/vendor/holder-2.3.1.min.js" %}"></script>
         {% endcompress %}
         
-        {% compress js %}
+        <!-- application javascript -->
         {% block app_js %}{% endblock %}
-        {% endcompress %}
                 
     </body>
 </html>

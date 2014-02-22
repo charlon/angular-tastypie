@@ -1,13 +1,27 @@
 {% extends "base.html" %}
 
 {% load staticfiles %}
+{% load compress %}
+
+{% block app_css %}
+    
+    {% compress css %}
+    <link rel="stylesheet" href="{% static "angular/css/mobile.less" %}" type="text/less">
+
+    {% if not request.is_mobile and not request.is_tablet %}
+    <link rel="stylesheet" href="{% static "angular/css/desktop.less" %}" type="text/less">
+    {% endif %}
+    
+    {% endcompress %}    
+        
+{% endblock %}
 
 {% block content %}
 
 <!-- define the angular app container -->
-<div data-ng-app="demoApp">
+<div data-ng-app="demoApp" class="angular-demo">
 
-    <h2>Angular</h2>
+    <h2 style="margin-top:0;">Angular</h2>
     
     <ul>
       <li><a ng-href="/angular">Home</a></li>
@@ -23,10 +37,12 @@
 {% endblock %}
 
 {% block app_js %}
+    {% compress js %}
     <script src="{% static "js/vendor/angular-1.2.13.min.js" %}"></script>
     <script src="{% static "js/vendor/angular-route-1.2.13.min.js" %}"></script>
     <script src="{% static "js/vendor/angular-resource-1.2.13.min.js" %}"></script>
     <script src="{% static "angular/js/app.js" %}"></script>
     <script src="{% static "angular/js/controllers.js" %}"></script>
+    {% endcompress %}
 {% endblock %}
 
