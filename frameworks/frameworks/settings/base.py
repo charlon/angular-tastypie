@@ -1,5 +1,5 @@
 """
-Django settings for angulartest project.
+Django settings for frameworks project.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/1.6/topics/settings/
@@ -55,9 +55,9 @@ MIDDLEWARE_CLASSES = (
     'django_mobileesp.middleware.UserAgentDetectionMiddleware',
 )
 
-ROOT_URLCONF = 'angulartest.urls'
+ROOT_URLCONF = 'frameworks.urls'
 
-WSGI_APPLICATION = 'angulartest.wsgi.application'
+WSGI_APPLICATION = 'frameworks.wsgi.application'
 
 
 # Database
