@@ -1,12 +1,8 @@
-{% extends "base_app.html,base_pjax.html"|pjax:request %}
+{% extends "pjax/base.html, pjax/base_pjax.html"|pjax:request %}
 
 {% block title %}Pjax home{% endblock %}
 
-
-{% load staticfiles %}
-{% load compress %}
-
-{% block pjax_content %}
+{% block content %}
 
 <h3>Home</h3>
 

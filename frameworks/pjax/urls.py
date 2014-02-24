@@ -12,6 +12,6 @@ urlpatterns = patterns('',
     url(r'^/test', 'pjax.views.test'),
     
     # /pjax/anything
-    url(r'^', 'pjax.views.app'),
+    url(r'^', 'pjax.views.index'),
     
 )
