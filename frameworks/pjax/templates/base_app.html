@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}Pjax base template{% endblock %}
+
+
+{% load staticfiles %}
+{% load compress %}
+
+{% block app_css %}
+    
+    {% compress css %}
+    <link rel="stylesheet" href="{% static "pjax/css/mobile.less" %}" type="text/less">
+
+    {% if not request.is_mobile and not request.is_tablet %}
+    <link rel="stylesheet" href="{% static "pjax/css/desktop.less" %}" type="text/less">
+    {% endif %}
+    
+    {% endcompress %}    
+        
+{% endblock %}
+
+{% block content %}
+
+<!-- define the angular app container -->
+<div class="pjax-demo">
+
+    <h2 style="margin-top:0;">PJAX</h2>
+    
+    <ul>
+      <li><a data-pjax href="/pjax">Home</a></li>
+      <li><a data-pjax href="/pjax/about">About</a></li>
+      <li><a data-pjax href="/pjax/test">Test</a></li>
+    </ul>
+         
+    <!-- all pjax content will render inside of this id -->
+    <div id="pjax-container">
+        {% block pjax_content %}{% endblock %}
+    </div>
+    
+</div>
+    
+{% endblock %}
+
+{% block app_js %}
+    {% compress js %}
+    <script src="{% static "js/vendor/jquery-pjax-1.8.0.min.js" %}"></script>
+
+    <script src="{% static "pjax/js/main.js" %}"></script>
+    {% endcompress %}
+{% endblock %}
+

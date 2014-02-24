@@ -39,12 +39,14 @@ INSTALLED_APPS = (
     
     #libs
     'compressor',
+    'easy_pjax',
     'tastypie',
     'rest_framework',
     
     #apps
     'api',
     'angular',
+    'pjax',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -101,6 +103,7 @@ STATICFILES_FINDERS = (
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
     os.path.join(BASE_DIR, 'angular', 'static'),
+    os.path.join(BASE_DIR, 'pjax', 'static'),
 )
 
 
@@ -134,4 +137,5 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'templates'),
     os.path.join(BASE_DIR, 'angular', 'templates'),
+    os.path.join(BASE_DIR, 'pjax', 'templates'),
 )
