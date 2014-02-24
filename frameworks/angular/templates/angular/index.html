@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta http-equiv="cleartype" content="on">
+        
+        {% load staticfiles %}
+        {% load compress %}
+        
+        <!-- favicon and mobile device icons-->
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{% static "ico/apple-touch-icon-144x144-precomposed.png" %}">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{% static "ico/apple-touch-icon-114x114-precomposed.png" %}">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{% static "ico/apple-touch-icon-72x72-precomposed.png" %}">
+        <link rel="apple-touch-icon-precomposed" sizes="57x57" href="{% static "ico/apple-touch-icon-57x57-precomposed.png" %}"> 
+        <link rel="shortcut icon" href="{% static "ico/favicon.ico" %}">
+        
+        <!-- windows8 - tile icon  & color -->
+        <meta name="msapplication-TileImage" content="{% static "ico/apple-touch-icon-144x144-precomposed.png" %}">
+        <meta name="msapplication-TileColor" content="#222222">
+        
+        <!-- ios webapps - delete if not needed -->
+        <!--
+        <meta name="apple-touch-fullscreen" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="apple-mobile-web-app-title" content="">
+        -->
+    
+        <!-- add google/web fonts if needed -->
+       
+        <!-- normalize or bootstrap and mobile-first styles -->
+        {% compress css %}
+            <!--<link rel="stylesheet" href="{% static "css/vendor/normalize-2.1.3.css" %}">-->
+            <link rel="stylesheet" href="{% static "css/vendor/bootstrap-3.1.1.min.css" %}">
+            <link rel="stylesheet" href="{% static "css/vendor/font-awesome-4.0.3.min.css" %}">
+            <link rel="stylesheet" href="{% static "css/mobile.less" %}" type="text/less">
+            {% if not request.is_mobile and not request.is_tablet %}
+            <link rel="stylesheet" href="{% static "css/desktop.less" %}" type="text/less">
+            {% endif %}
+            
+        {% endcompress %}
+        
+        <!-- application styles -->
+        {% compress css %}
+        <link rel="stylesheet" href="{% static "angular/css/mobile.less" %}" type="text/less">
+    
+        {% if not request.is_mobile and not request.is_tablet %}
+        <link rel="stylesheet" href="{% static "angular/css/desktop.less" %}" type="text/less">
+        {% endif %}
+        
+        {% endcompress %}  
+        
+        <!-- modernizr -->                
+        <script src="{% static "js/vendor/modernizr-2.6.2.min.js" %}"></script>
+        
+    </head>
+    <body>
+        
+        <!-- wrap all content here -->
+        <div id="wrap">
+        
+            <!-- begin page content -->
+            <div class="container">
+                
+                <h1>Frameworks</h1>
+                
+                <nav class="navbar navbar-default" role="navigation">
+                    <a href="/" class="navbar-brand">Home</a>
+                    <ul class="nav navbar-nav">
+                      <li><a href="/angular">Angular</a></li>
+                      <li><a href="/backbone">Backbone</a></li>
+                      <li><a href="/hybrid">Hybrid</a></li>
+                      <li><a href="/pjax">PJAX</a></li>
+                    </ul>
+                </nav>
+                
+                <!-- define the angular app container -->
+                <div data-ng-app="demoApp" class="angular-demo">
+                
+                    <h2 style="margin-top:0;">Angular</h2>
+                    
+                    <ul>
+                      <li><a ng-href="/angular">Home</a></li>
+                      <li><a ng-href="/angular/about">About</a></li>
+                      <li><a ng-href="/angular/test">Test</a></li>
+                    </ul>
+                         
+                    <!-- placeholder for angular partials -->
+                    <div data-ng-view=""></div>
+                    
+                </div>
+                         
+                
+            </div>
+        
+        </div><!-- /wrap -->
+
+        <div id="footer">
+            <div class="container">
+                <!-- example of request.is_mobile and request.is_tablet usage in templates -->    
+                {% if request.is_mobile %}
+                <p class="text-muted credit">Courtesy of <a href="">Charlon</a> and <a href="">Craig</a>. UW-IT ACA</p>
+                {% else %}
+                <p class="text-muted credit">Scaffold courtesy of <a href="">Charlon Palacay</a> and <a href="">Craig Stimmel</a>. UW-IT ACA</p>
+                {% endif %}
+            </div>
+        </div>
+        
+        <!-- show this in dev mode -->
+        <div id="developer">
+            <span class="label label-danger">
+            {% if request.is_mobile %}Mobile{% elif request.is_tablet %}Tablet{% else %}Desktop{%endif %}    
+            </span>
+        </div>
+        
+        <!-- jquery -->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="{% static "js/vendor/jquery-2.1.0.min.js" %}"><\/script>')</script>
+                
+        <!-- javascript -->
+        {% compress js %}
+            <script src="{% static "js/vendor/bootstrap-3.1.1.min.js" %}"></script>
+            <script src="{% static "js/vendor/holder-2.3.1.min.js" %}"></script>
+            
+            <script src="{% static "js/vendor/angular-1.2.13.min.js" %}"></script>
+            <script src="{% static "js/vendor/angular-route-1.2.13.min.js" %}"></script>
+            <script src="{% static "js/vendor/angular-resource-1.2.13.min.js" %}"></script>
+          
+            <script src="{% static "angular/js/app.js" %}"></script>
+            <script src="{% static "angular/js/controllers.js" %}"></script>
+        {% endcompress %}
+        
+
+                
+    </body>
+</html>
