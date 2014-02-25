@@ -40,10 +40,10 @@ INSTALLED_APPS = (
     #libs
     'compressor',
     'easy_pjax',
-    'tastypie',
     'rest_framework',
     
     #apps
+    'stampos',
     'api',
     'angular',
     'pjax',
