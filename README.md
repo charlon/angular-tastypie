@@ -1,7 +1,7 @@
 frameworks-comparison
 ====================
 
-Django project that serves a REST API using Tastypie. For the clients, a comparison of various client-side js applications that consumes the API. Going to enable PushState across all the comparison apps.
+Django project that serves a REST API. For the clients, a comparison of various client-side js applications that consumes the API as well as a Django app using PJAX. PushState is supported across all the comparison apps.
 
 Installation
 ------------
