@@ -7,11 +7,11 @@ from stampos import views
 
 urlpatterns = patterns('',
         
-    # /stampos/api/v1/badge 
-    url(r'^/api/v1/badges$', views.BadgeList.as_view(), name='badge-list'),
+    # /stampos/api/v1/badges 
+    url(r'^/badges$', views.BadgeList.as_view(), name='badge-list'),
     
-    # /stampos/api/v1/badge/:id
-    url(r'^/api/v1/badges/(?P<pk>[0-9]+)', views.BadgeDetail.as_view(), name='badge-detail'),
+    # /stampos/api/v1/badges/:id
+    url(r'^/badges/(?P<pk>[0-9]+)', views.BadgeDetail.as_view(), name='badge-detail'),
     
 )
 

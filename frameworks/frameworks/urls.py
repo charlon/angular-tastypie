@@ -4,16 +4,16 @@ urlpatterns = patterns('',
     
     # main project url routing
     
-     # include the app "/stampos"
-    url(r'^stampos', include('stampos.urls')),
+     # route /api/v1 calls to the stampos app
+    url(r'^api/v1', include('stampos.urls')),
         
-    # include the anglue app "/angular"
+    # route /angular calls to the angular app
     url(r'^angular', include('angular.urls')),
     
-    # include the pjax app "/pjax"
+    # route /pjax calls to the pjax app
     url(r'^pjax', include('pjax.urls')),
     
-    # / and /anything
+    # route / to the default index view
     url(r'^', 'frameworks.views.index'),
     
 )
