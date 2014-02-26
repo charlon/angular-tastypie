@@ -2,6 +2,9 @@ from django.conf import settings
 from django.template import RequestContext
 from django.shortcuts import render_to_response
 
+import json
+
+
 # create your views here
 
 def index(request, template_name="pjax/index.html"):
@@ -16,4 +19,9 @@ def test(request, template_name="pjax/test.html"):
 # let's figure this REST stuff out
     
 def badges(request, template_name="pjax/badges.html"):
-    return render_to_response(template_name, context_instance=RequestContext(request))
+    
+    test_json = '{ "key_name" : "bobby digital key" }'
+
+    encoded = json.loads(test_json)
+        
+    return render_to_response(template_name, {'encoded' : encoded }, context_instance=RequestContext(request))
