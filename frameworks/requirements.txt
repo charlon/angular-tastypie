@@ -1,7 +1,6 @@
 django
 django-compressor
 django-easy-pjax
-django-tastypie
 djangorestframework
 
 -e git+https://github.com/abztrakt/django-mobileesp/#egg=django_mobileesp
