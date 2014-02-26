@@ -1,8 +1,9 @@
-// SpaceFactory: example using $resource call to mock REST api
+// BadgeFactory: example using $resource call to REST api
+
 demoApp.factory('BadgeFactory', function ($resource) {
 
     return {
-        Badge: $resource('http://localhost:8000/api/v1/badges?format=json', {
+        Badge: $resource('/api/v1/badges?format=json', {
             id: '@id',
             name: '@name',
             descript: '@description'
