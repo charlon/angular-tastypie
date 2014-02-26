@@ -9,3 +9,16 @@ demoApp.controller('SimpleController', function ($scope) {
    };
 
 });
+
+// BadgeController
+demoApp.controller('BadgeController', function ($scope, BadgeFactory) {
+
+    $scope.badges = [];
+
+    init();
+
+    function init() {
+        $scope.badges = BadgeFactory.Badge.all();
+    }
+
+});

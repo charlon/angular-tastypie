@@ -1,0 +1,12 @@
+<h3>Badges</h3>
+
+<p>Here is a list of badges from the API:</p>
+
+<ul>
+    <!-- loop through all badges -->
+    <li data-ng-repeat="badge in badges | orderBy: 'id'">
+        <div>{{badge.id}}, {{badge.name}}
+        <br/>description: {{badge.description }}</div>
+    </li>
+</ul>
+

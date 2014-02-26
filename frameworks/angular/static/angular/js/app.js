@@ -23,6 +23,11 @@ demoApp.config(function ($routeProvider, $locationProvider) {
                 controller: 'SimpleController',
                 templateUrl: '/static/angular/partials/test.html'
             })
+        .when('/angular/badges',
+            {
+                controller: 'BadgeController',
+                templateUrl: '/static/angular/partials/badges.html'
+            })
         .otherwise({ redirectTo: '/angular' });
         
 });
