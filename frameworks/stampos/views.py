@@ -9,3 +9,6 @@ from rest_framework import generics
 
 class BadgeList(generics.ListCreateAPIView):
     model = Badge
+
+class BadgeDetail(generics.RetrieveUpdateDestroyAPIView):
+    model = Badge

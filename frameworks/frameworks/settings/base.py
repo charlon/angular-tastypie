@@ -44,7 +44,6 @@ INSTALLED_APPS = (
     
     #apps
     'stampos',
-    'api',
     'angular',
     'pjax',
 )
