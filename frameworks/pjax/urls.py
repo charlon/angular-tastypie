@@ -8,8 +8,11 @@ urlpatterns = patterns('',
     # /pjax/about
     url(r'^/about', 'pjax.views.about'),
     
-     # /pjax/test
+    # /pjax/test
     url(r'^/test', 'pjax.views.test'),
+    
+    # /pjax/badges
+    url(r'^/badges', 'pjax.views.badges'),
     
     # /pjax/anything
     url(r'^', 'pjax.views.index'),
