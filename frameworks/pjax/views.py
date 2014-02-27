@@ -2,6 +2,7 @@ from django.conf import settings
 from django.template import RequestContext
 from django.shortcuts import render_to_response
 
+import urllib
 import json
 
 
@@ -20,8 +21,10 @@ def test(request, template_name="pjax/test.html"):
     
 def badges(request, template_name="pjax/badges.html"):
     
-    test_json = '{ "key_name" : "bobby digital key" }'
-
-    encoded = json.loads(test_json)
+    # make a call to the badge api
+    badge_json = urllib.urlopen('http://localhost:8001/api/v1/badges?format=json').read()
+    encoded = json.loads(badge_json)
+    
+    # turn the json into a python dict
         
     return render_to_response(template_name, {'encoded' : encoded }, context_instance=RequestContext(request))
