@@ -23,8 +23,8 @@ def badges(request, template_name="pjax/badges.html"):
     
     # make a call to the badge api
     badge_json = urllib.urlopen('http://localhost:8001/api/v1/badges?format=json').read()
-    badges = json.loads(badge_json)
     
-    # turn the json into a python dict
-        
+    # turn the json into a python object
+    badges = json.loads(badge_json)
+       
     return render_to_response(template_name, {'badges' : badges }, context_instance=RequestContext(request))
