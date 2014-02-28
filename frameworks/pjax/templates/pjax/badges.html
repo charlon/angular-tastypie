@@ -10,8 +10,13 @@
 
 <ul>
     <!-- for each badge in badges -->
-    <li>item</li>
-    <li>item</li>
+    {% for badge in badges %}
+    <li>
+        <div>{{badge.id}}, {{badge.name}}
+        <br/>description: {{badge.description }}</div>
+    </li>
+    {% endfor %}
+    
 </ul>
 
 <p>{{ encoded }}</p>
