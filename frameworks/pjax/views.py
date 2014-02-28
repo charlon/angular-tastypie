@@ -21,10 +21,13 @@ def test(request, template_name="pjax/test.html"):
     
 def badges(request, template_name="pjax/badges.html"):
     
+    # get the json url for badges
+    badge_url = 'http://' + request.get_host() + '/api/v1/badges?format=json';
+    
     # make a call to the badge api
-    badge_json = urllib.urlopen('http://localhost:8001/api/v1/badges?format=json').read()
+    badge_json = urllib.urlopen(badge_url).read()
     
     # turn the json into a python object
-    badges = json.loads(badge_json)
+    badges_list = json.loads(badge_json)
        
-    return render_to_response(template_name, {'badges' : badges }, context_instance=RequestContext(request))
+    return render_to_response(template_name, {'badges' : badges_list, 'url': badge_url }, context_instance=RequestContext(request))

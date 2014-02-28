@@ -6,19 +6,17 @@
 
 <h3>Badges</h3>
 
-<p>Here is a list of badges from the API:</p>
+<p>Here is a list of badges from the <a href="{{url}}">API</a>:</p>
 
 <ul>
     <!-- for each badge in badges -->
     {% for badge in badges %}
     <li>
-        <div>{{badge.id}}, {{badge.name}}
-        <br/>description: {{badge.description }}</div>
+        <div>{{ badge.id }}, {{ badge.name }}
+        <br/>description: {{ badge.description }}</div>
     </li>
     {% endfor %}
-    
+        
 </ul>
-
-<p>{{ encoded }}</p>
 
 {% endblock %}
