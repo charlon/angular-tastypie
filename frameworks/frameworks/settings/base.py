@@ -46,6 +46,7 @@ INSTALLED_APPS = (
     'stampos',
     'angular',
     'backbone',
+    'hybrid',
     'pjax',
 )
 
@@ -104,6 +105,7 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
     os.path.join(BASE_DIR, 'angular', 'static'),
     os.path.join(BASE_DIR, 'backbone', 'static'),
+    os.path.join(BASE_DIR, 'hybrid', 'static'),
     os.path.join(BASE_DIR, 'pjax', 'static'),
 )
 
@@ -139,5 +141,6 @@ TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'templates'),
     os.path.join(BASE_DIR, 'angular', 'templates'),
     os.path.join(BASE_DIR, 'backbone', 'templates'),
+    os.path.join(BASE_DIR, 'hybrid', 'templates'),
     os.path.join(BASE_DIR, 'pjax', 'templates'),
 )

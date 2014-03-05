@@ -13,6 +13,9 @@ urlpatterns = patterns('',
     # route /angular calls to the angular app
     url(r'^backbone', include('backbone.urls')),
     
+    # route /angular calls to the angular app
+    url(r'^hybrid', include('hybrid.urls')),
+    
     # route /pjax calls to the pjax app
     url(r'^pjax', include('pjax.urls')),
     
