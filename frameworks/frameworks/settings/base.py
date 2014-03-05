@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'compressor',
     'easy_pjax',
     'rest_framework',
+    'templatetag_handlebars',
     
     #apps
     'stampos',
