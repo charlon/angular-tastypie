@@ -1,4 +1,5 @@
 {% extends "hybrid/base.html" %}
+{% load templatetag_handlebars %}
 
 {% block title %}Hybrid badges{% endblock %}
 
@@ -8,8 +9,23 @@
 
 <p>Here is a list of badges from the API</p>
 
-<div style="border:solid 1px gray">
+<div id="badge_list_container" style="border:solid 1px red; padding: 1em;">
+    
     loading...
+    
+    {% tplhandlebars "tpl-badge-list" %}
+    
+        {{total}} 
+        <p>Min: {{min}}</p>
+        <p>Max: {{max}}</p>
+    
+    {% endtplhandlebars %}
+    
 </div>
+
+<script type="text/javascript">
+    data_from_django = {{ badges }};
+    widget.init(data_from_django);
+</script>
 
 {% endblock %}
