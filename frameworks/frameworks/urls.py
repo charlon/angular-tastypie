@@ -11,7 +11,7 @@ urlpatterns = patterns('',
     url(r'^angular', include('angular.urls')),
     
     # route /angular calls to the angular app
-    url(r'^backbone', include('backbone.urls')),
+    #url(r'^backbone', include('backbone.urls')),
     
     # route /angular calls to the angular app
     url(r'^hybrid', include('hybrid.urls')),
