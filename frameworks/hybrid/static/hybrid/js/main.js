@@ -4,24 +4,17 @@ $(function() {
     
     console.log(stuff);
     
-    //var blah = jQuery.parseJSON(stuff);
-    
-   // console.log(typeof(blah));
-    
     // compile handlebars template
     var template = Handlebars.compile($('#tpl-badge-list').html()),
         rendered = template({ badgestuff: stuff });
                 
-    // paint it where? at the end of the content
-    $("#badge_list_container").html(rendered);
-
-    // simulate a longer rendering time
-    /*setTimeout(function () {
+    // simulate a delayed rendering time
+    setTimeout(function () {
     
-        // paint it where? at the end of the content
+        // paint it in the badge list container
         $("#badge_list_container").html(rendered);
     
-    }, 900);*/
+    }, 400);
         
         
 });

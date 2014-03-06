@@ -27,7 +27,5 @@ def badges(request, template_name="hybrid/badges.html"):
     # make a call to the badge api
     badge_json = urllib.urlopen(badge_url).read()
     
-    # turn the json into a python object
-    #badges_list = json.dumps(badge_json)
-       
-    return render_to_response(template_name, {'badges' : badge_json, 'url': badge_url }, context_instance=RequestContext(request))
+    # pass the badge json to the template as a badges object       
+    return render_to_response(template_name, {'badges' : badge_json }, context_instance=RequestContext(request))
