@@ -6,7 +6,7 @@ $(function() {
     
     // compile handlebars template
     var template = Handlebars.compile($('#tpl-badge-list').html()),
-        rendered = template({ badgestuff: stuff });
+        rendered = template({ badgestuff : stuff });
                 
     // simulate a delayed rendering time
     setTimeout(function () {
