@@ -28,6 +28,6 @@ def badges(request, template_name="pjax/badges.html"):
     badge_json = urllib.urlopen(badge_url).read()
     
     # turn the json into a python object
-    badges_list = json.loads(badge_json)
+    badge_object = json.loads(badge_json)
        
-    return render_to_response(template_name, {'badges' : badges_list, 'url': badge_url }, context_instance=RequestContext(request))
+    return render_to_response(template_name, {'badges' : badge_object }, context_instance=RequestContext(request))
