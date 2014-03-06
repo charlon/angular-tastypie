@@ -14,11 +14,16 @@
     loading...
     
     {% tplhandlebars "tpl-badge-list" %}
-    
+        
+        <ul>
         {{ #each badgestuff }}
-            {{ name }}
+            <li>
+                <div>{{ id }}, {{ name }}
+                <br/>description: {{ description }}</div>
+            </li>
         {{/each}}
-            
+        </ul>
+                
     {% endtplhandlebars %}
     
 </div>
