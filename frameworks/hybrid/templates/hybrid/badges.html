@@ -9,23 +9,23 @@
 
 <p>Here is a list of badges from the API</p>
 
-<div id="badge_list_container" style="border:solid 1px red; padding: 1em;">
+<div id="badge_list_container" style="border:solid 1px red; padding: 1em;" data-badges="{{badges}}">
     
     loading...
     
     {% tplhandlebars "tpl-badge-list" %}
     
-        {{total}} 
-        <p>Min: {{min}}</p>
-        <p>Max: {{max}}</p>
-    
+        {{#each badgestuff }}
+            {{ @index : name }}
+        {{/each}}
+            
     {% endtplhandlebars %}
     
 </div>
 
-<script type="text/javascript">
-    data_from_django = {{ badges }};
-    widget.init(data_from_django);
-</script>
+<!--<script type="text/javascript">
+    badges_json = {{ badges }};
+    widget.init(badges_json);
+</script>-->
 
 {% endblock %}
