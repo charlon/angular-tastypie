@@ -34,3 +34,10 @@ nosetests.xml
 .mr.developer.cfg
 .project
 .pydevproject
+
+# node and virtualenv dirs
+node_modules
+include
+local
+share
+src
