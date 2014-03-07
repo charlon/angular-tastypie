@@ -83,10 +83,12 @@
                       <li><a data-pjax href="/pjax/test">Test</a></li>
                       <li><a data-pjax href="/pjax/badges">Badges</a></li>
                     </ul>
+                    
+                    <div id="pjax-loading" class="hidden">loading...</div>    
                          
                     <!-- all pjax content will render inside of this id -->
-                    <div id="pjax-container">               
-                    {% block content %}{% endblock %}
+                    <div id="pjax-container">           
+                        {% block content %}{% endblock %}
                     </div>
                 
                 </div>

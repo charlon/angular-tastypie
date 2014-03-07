@@ -1,15 +1,21 @@
 $(function() {
     
-    $document = $(document);
+    $(document).pjax('[data-pjax] a, a[data-pjax]', '#pjax-container')
+    
+    $(document).on("pjax:beforeSend", function(e) {
+        $("#pjax-loading").removeClass("hidden");
+        $('#pjax-container').hide();
+    });
 
-    $document.on('ready pjax:end', function() {
-        
-        // Use this for document ready code
-             
+    $(document).on("pjax:complete", function() {
+        $("#pjax-loading").addClass("hidden");
+        $('#pjax-container').show();
     });
     
-    $document.pjax('a[data-pjax]', '#pjax-container', {
-        timeout: 3000
-    });
+    $(document).on('pjax:timeout', function(event) {
+        // Prevent default timeout redirection behavior
+        event.preventDefault()
+    })
+    
     
 });
