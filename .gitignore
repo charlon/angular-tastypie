@@ -41,3 +41,6 @@ include
 local
 share
 src
+
+# project db
+*.sqlite3
