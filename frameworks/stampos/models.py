@@ -6,7 +6,7 @@ class Badge(models.Model):
     description = models.TextField()
     presenters = models.TextField()
     badge_class = models.CharField(max_length=100)
-    badge_pin = models.IntegerField(max_length=4, unique=True)
+    badge_pin = models.IntegerField(max_length=10)
 
     #def json_data(self):
     #    data = {'id': self.pk,
