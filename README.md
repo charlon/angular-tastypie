@@ -39,7 +39,7 @@ Export settings (for each terminal - for now)
 Sync database:
 
     $ python manage.py syncdb
-    $ python manage.py compile
+    $ python manage.py populate_db_profiling
     
 Run server (using local settings):
 
