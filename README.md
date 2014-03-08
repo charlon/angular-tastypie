@@ -20,6 +20,10 @@ Turn the cloned repository into a virtualenv.
 
 **Dependencies:**
 
+Install LessCSS via Node
+
+    $ npm install -g less
+    
 Install the requirements
 
     $ cd frameworks
@@ -31,6 +35,11 @@ Server
 Export settings (for each terminal - for now)
 
     $ export DJANGO_SETTINGS_MODULE=frameworks.settings.local
+    
+Sync database:
+
+    $ python manage.py syncdb
+    $ python manage.py compile
     
 Run server (using local settings):
 
