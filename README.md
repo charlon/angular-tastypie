@@ -36,7 +36,7 @@ Export settings (for each terminal - for now)
 
     $ export DJANGO_SETTINGS_MODULE=frameworks.settings.local
     
-Sync database:
+Create the database and seed:
 
     $ python manage.py syncdb
     $ python manage.py populate_db_profiling
