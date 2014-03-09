@@ -6,7 +6,7 @@ $(function() {
         
         
         // if it's taken longer than 250ms... show the loading message & hide existing content
-          timer = setTimeout(function() {
+          loadingTimeout = setTimeout(function() {
                 $("#pjax-loading").show();
                 $('#pjax-container').hide();
           }, 250);
@@ -20,7 +20,7 @@ $(function() {
         $('#pjax-container').show();
         
         // cancel showing the message when the ajax call completes.
-        clearTimeout(timer);
+        clearTimeout(loadingTimeout);
         
     });
     
