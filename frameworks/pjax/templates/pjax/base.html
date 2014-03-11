@@ -84,10 +84,12 @@
                       <li><a data-pjax href="/pjax/badges">Badges</a></li>
                     </ul>
                     
-                    <div id="pjax-loading" class="hidden" style="border: solid 1px orange; padding: 1em;">loading content block via pjax...</div>      
+                    <p style="color:teal;">Django is serving up pages using it's standard router/view/template architecture + pushState/AJAX (PJAX). Each page request  does NOT do a full reload.</p>
+                    
+                    <div id="pjax-loading" class="hidden" style="border: solid 1px teal; padding: 1em;">this template is taking longer to render...</div>      
                          
                     <!-- all pjax content will render inside of this id -->
-                    <div id="pjax-container" style="border: solid 1px orange; padding: 1em;">      
+                    <div id="pjax-container" style="border: solid 1px teal; padding: 1em;">      
                         {% block content %}{% endblock %}
                     </div>
                 
