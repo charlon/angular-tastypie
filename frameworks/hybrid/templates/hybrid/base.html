@@ -84,9 +84,11 @@
                       <li><a data-pjax href="/hybrid/test">Test</a></li>
                       <li><a data-pjax href="/hybrid/badges">Badges</a></li>
                     </ul>
-                         
+                    
+                    <p style="color:fuchsia;">Django is serving up pages using it's standard router/view/template architecture. Each page request does a full page reload.</p>
+                          
                     <!-- all pjax content will render inside of this id -->
-                    <div id="hybrid-content">               
+                    <div id="hybrid-content" style="border: solid 1px fuchsia; padding: 1em;">               
                     {% block content %}{% endblock %}
                     </div>
                 

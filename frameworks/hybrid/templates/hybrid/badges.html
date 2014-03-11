@@ -7,12 +7,14 @@
 
 <h3>Badges</h3>
 
-<p>Here is a list of badges from the API</p>
+<p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ullamcorper nulla non metus auctor fringilla.</p>
+
+<p style="color:fuchsia;">This template has a view that is making a server-side call to the API. The json data is being passed into a data- attribute in the div below:</p>
 
 <!-- store the badge json as a data- attribute -->
 <div id="badge_list_container" data-badges="{{badges}}" style="border: solid 1px fuchsia; padding: 1em;">
     
-    <div>loading via handlebars...</div>
+    <div>jquery is rendering the data using handlebars...</div>
     
     {% tplhandlebars "tpl-badge-list" %}
         
