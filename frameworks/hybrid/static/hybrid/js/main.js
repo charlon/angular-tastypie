@@ -6,10 +6,10 @@ $(function() {
     
 
       // get the badges json from the data-badges attribute
-        var stuff = $('#badge_list_container').data('badges');
+        var badge_json = $('#badge_list_container').data('badges');
         
         // give context
-        var context = { badges: stuff };
+        var context = { badges: badge_json };
     
         // compile handlebars template and render
         var template = Handlebars.compile($('#tpl-badge-list').html()),
@@ -21,7 +21,7 @@ $(function() {
             // paint it in the badge list container
             $("#badge_list_container").html(rendered);
         
-        }, 100);
+        }, 250);
 
     }
     

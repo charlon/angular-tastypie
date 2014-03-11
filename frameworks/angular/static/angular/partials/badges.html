@@ -2,13 +2,17 @@
 
 <p>Here is a list of badges from the API:</p>
 
-<div data-loading-indicator=""></div>
 
-<ul>
-    <!-- loop through all badges -->
-    <li data-ng-repeat="badge in badges | orderBy: 'id'">
-        <div>{{badge.id}}, {{badge.name}}
-        <br/>description: {{badge.description }}</div>
-    </li>
-</ul>
+<div style="border: solid 1px red; padding: 1em;">
 
+    <div data-loading-indicator=""></div>
+    
+    <ul>
+        <!-- loop through all badges -->
+        <li data-ng-repeat="badge in badges | orderBy: 'id'">
+            <div>{{badge.id}}, {{badge.name}}
+            <br/>description: {{badge.description }}</div>
+        </li>
+    </ul>
+
+</div>

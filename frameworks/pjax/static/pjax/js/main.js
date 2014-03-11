@@ -7,8 +7,8 @@ $(function() {
         
         // if it's taken longer than 250ms... show the loading message & hide existing content
           loadingTimeout = setTimeout(function() {
-                $("#pjax-loading").show();
-                $('#pjax-container').hide();
+                $("#pjax-loading").removeClass('hidden');
+                $('#pjax-container').addClass('hidden');
           }, 250);
     
     });
@@ -16,8 +16,8 @@ $(function() {
     $(document).on("pjax:complete", function() {
                 
         // once pjax completes... hide the loading message and make sure the content is showing    
-        $("#pjax-loading").hide();
-        $('#pjax-container').show();
+        $("#pjax-loading").addClass('hidden');
+        $('#pjax-container').removeClass('hidden');
         
         // cancel showing the message when the ajax call completes.
         clearTimeout(loadingTimeout);

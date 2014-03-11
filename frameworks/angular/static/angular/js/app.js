@@ -51,7 +51,7 @@ demoApp.config(function ($routeProvider, $locationProvider, $httpProvider) {
 demoApp.directive("loadingIndicator", function() {
     return {
         restrict : "A",
-        template: "looooading...",
+        template: "loading via angular interceptor...",
         link : function(scope, element, attrs) {
             scope.$on("loading-started", function(e) {
                 element.css({"display" : ""});

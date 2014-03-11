@@ -84,10 +84,10 @@
                       <li><a data-pjax href="/pjax/badges">Badges</a></li>
                     </ul>
                     
-                    <div id="pjax-loading" style="display:none;">loading...</div>      
+                    <div id="pjax-loading" class="hidden" style="border: solid 1px orange; padding: 1em;">loading content block via pjax...</div>      
                          
                     <!-- all pjax content will render inside of this id -->
-                    <div id="pjax-container">      
+                    <div id="pjax-container" style="border: solid 1px orange; padding: 1em;">      
                         {% block content %}{% endblock %}
                     </div>
                 
