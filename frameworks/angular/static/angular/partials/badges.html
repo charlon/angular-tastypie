@@ -1,19 +1,24 @@
 <h3>Badges</h3>
 
-<p>Here is a list of badges from the API:</p>
 
+<p>Sed posuere consectetur est at lobortis. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec sed odio dui. Vestibulum id ligula porta felis euismod semper. Maecenas faucibus mollis interdum.</p>
 
+<p style="color:red;">This partial is dynamic. It has a controller that makes a client-side call to the API. The contents will be displayed below:</p>
 
-<ul>
+<div style="border:solid 1px red; padding:1em;">
+    <div data-loading-indicator=""></div>
     
-    <!-- loading indicator -->
-    <li data-loading-indicator=""></li>
-    
-    <!-- loop through all badges -->
-    <li data-ng-repeat="badge in badges | orderBy: 'id'">
-        <div>{{badge.id}}, {{badge.name}}
-        <br/>description: {{badge.description }}</div>
-    </li>
-    
-</ul>
+    <ul>
+        
+        <!-- loading indicator -->
+        
+        
+        <!-- loop through all badges -->
+        <li data-ng-repeat="badge in badges | orderBy: 'id'">
+            <div>{{badge.id}}, {{badge.name}}
+            <br/>description: {{badge.description }}</div>
+        </li>
+        
+    </ul>
+</div>
 
