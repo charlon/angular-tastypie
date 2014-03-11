@@ -3,16 +3,17 @@
 <p>Here is a list of badges from the API:</p>
 
 
-<div style="border: solid 1px red; padding: 1em;">
 
-    <div data-loading-indicator=""></div>
+<ul>
     
-    <ul>
-        <!-- loop through all badges -->
-        <li data-ng-repeat="badge in badges | orderBy: 'id'">
-            <div>{{badge.id}}, {{badge.name}}
-            <br/>description: {{badge.description }}</div>
-        </li>
-    </ul>
+    <!-- loading indicator -->
+    <li data-loading-indicator=""></li>
+    
+    <!-- loop through all badges -->
+    <li data-ng-repeat="badge in badges | orderBy: 'id'">
+        <div>{{badge.id}}, {{badge.name}}
+        <br/>description: {{badge.description }}</div>
+    </li>
+    
+</ul>
 
-</div>
