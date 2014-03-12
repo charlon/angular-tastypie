@@ -54,6 +54,12 @@
         <!-- modernizr -->                
         <!--<script src="{% static "js/vendor/modernizr-2.6.2.min.js" %}"></script>-->
         
+        <script>
+           var startTime, endTime, millisecondsLoading;
+           // start the timer on the initial pjax request
+           startTime = (new Date()).getTime();        
+        </script>
+
     </head>
     <body>
         
@@ -78,17 +84,20 @@
                 
                     <h2 style="margin-top:0;">Hybrid</h2>
         
-                    <ul>
-                      <li><a data-pjax href="/hybrid">Home</a></li>
-                      <li><a data-pjax href="/hybrid/about">About</a></li>
-                      <li><a data-pjax href="/hybrid/test">Test</a></li>
-                      <li><a data-pjax href="/hybrid/badges">Badges</a></li>
+                    <ul id="hybrid_links">
+                      <li><a href="/hybrid">Home</a></li>
+                      <li><a href="/hybrid/about">About</a></li>
+                      <li><a href="/hybrid/test">Test</a></li>
+                      <li><a href="/hybrid/badges">Badges</a></li>
                     </ul>
                     
-                    <p style="color:fuchsia;">Django is serving up pages using it's standard router/view/template architecture. Each page request does a full page reload.</p>
+                    <p style="color:purple;">Django is serving up pages using it's standard router/view/template architecture. Each page request does a full page reload.</p>
                           
                     <!-- all pjax content will render inside of this id -->
-                    <div id="hybrid-content" style="border: solid 1px fuchsia; padding: 1em;">               
+                    <div id="hybrid-content" style="border: solid 1px purple; padding: 1em; position:relative;"> 
+                    
+                    <span class="label label-default" id="load_timer" style="position:absolute; top:10px; right:10px; background:purple;"></span> 
+                                  
                     {% block content %}{% endblock %}
                     </div>
                 

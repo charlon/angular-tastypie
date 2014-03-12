@@ -1,6 +1,23 @@
 $(function() {
     
-    
+    $(window).load(function(){
+        
+        // calculate total loading time
+        endTime = (new Date()).getTime();
+        millisecondsLoading = endTime - startTime;
+        
+        if(millisecondsLoading >= 1000) {
+            // convert to seconds        	
+        	millisecondsLoading = (millisecondsLoading / 1000) + " s";
+        } 
+        else {
+        	millisecondsLoading = millisecondsLoading + " ms";
+        }
+        
+        $("#load_timer").html(millisecondsLoading);
+            
+    });
+        
     // check to see if the badge list container exists... if so, start the display process via handlebars    
     if( $("#badge_list_container" ).length > 0) {
     
@@ -20,10 +37,23 @@ $(function() {
         
             // paint it in the badge list container
             $("#badge_list_container").html(rendered);
+                        
+            // calculate total loading time
+            endTime = (new Date()).getTime();
+            millisecondsLoading = endTime - startTime;
+            
+            if(millisecondsLoading >= 1000) {
+                // convert to seconds        	
+            	millisecondsLoading = (millisecondsLoading / 1000) + " s";
+            } 
+            else {
+            	millisecondsLoading = millisecondsLoading + " ms";
+            }
+            
+            $("#hb_timer").html(millisecondsLoading);
         
-        }, 250);
+        }, 10);
 
     }
-    
-        
+ 
 });
