@@ -1,6 +1,6 @@
 $(function() {
     
-    $(window).load(function(){
+    $(window).bind("load", function() {
         
         // calculate total loading time
         endTime = (new Date()).getTime();
