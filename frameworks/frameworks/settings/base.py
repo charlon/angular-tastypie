@@ -46,6 +46,7 @@ INSTALLED_APPS = (
     #apps
     'stampos',
     'angular',
+    'ember',
     #'backbone',
     'hybrid',
     'pjax',
@@ -105,6 +106,7 @@ STATICFILES_FINDERS = (
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
     os.path.join(BASE_DIR, 'angular', 'static'),
+    os.path.join(BASE_DIR, 'ember', 'static'),
     os.path.join(BASE_DIR, 'backbone', 'static'),
     os.path.join(BASE_DIR, 'hybrid', 'static'),
     os.path.join(BASE_DIR, 'pjax', 'static'),
@@ -141,6 +143,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'templates'),
     os.path.join(BASE_DIR, 'angular', 'templates'),
+    os.path.join(BASE_DIR, 'ember', 'templates'),
     os.path.join(BASE_DIR, 'backbone', 'templates'),
     os.path.join(BASE_DIR, 'hybrid', 'templates'),
     os.path.join(BASE_DIR, 'pjax', 'templates'),
