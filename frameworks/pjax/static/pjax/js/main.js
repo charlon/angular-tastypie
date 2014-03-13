@@ -4,17 +4,26 @@ $(function() {
     
     $(document).pjax('[data-pjax] a, a[data-pjax]', '#pjax-container',  {timeout: 10000})
     
-    $(document).on("pjax:send", function(e) {
+    $(document).on("pjax:start", function() {
+
+        console.log("start");
         
         // start the timer on the initial pjax request
         startTime = (new Date()).getTime();
+    });
+    
+    
+    $(document).on("pjax:send", function(e) {
+        
+        
         
         // if it's taken longer than 250ms... show the loading message & hide existing content
           loadingTimeout = setTimeout(function() {
                 $("#pjax-loading").removeClass('hidden');
                 $('#pjax-container').addClass('hidden');
           }, 250);
-    
+          
+          console.log("send");
     });
 
     $(document).on("pjax:complete", function() {
@@ -25,6 +34,16 @@ $(function() {
         
         // cancel showing the message when the ajax call completes.
         clearTimeout(loadingTimeout);
+        
+        
+        console.log("complete");
+        
+    });
+    
+    
+    
+    $(document).on("pjax:end", function() {
+        console.log("end");
         
         // calculate total loading time
         endTime = (new Date()).getTime();
@@ -39,11 +58,14 @@ $(function() {
         }
         
         $("#load_timer").html(millisecondsLoading);
+        
+        //window.location.href = "/home";
+        
     });
     
     $(document).on('pjax:timeout', function(event) {
         // Prevent default timeout redirection behavior
         event.preventDefault();
-    })
+    });
        
 });
