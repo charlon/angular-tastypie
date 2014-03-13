@@ -1,8 +1,11 @@
 $(function() {
     
+    // once the page has fully loaded...
+    
     $(window).bind("load", function() {
         
         // calculate total loading time
+        
         endTime = (new Date()).getTime();
         millisecondsLoading = endTime - startTime;
         
@@ -14,14 +17,23 @@ $(function() {
         	millisecondsLoading = millisecondsLoading + " ms";
         }
         
+        // display the time to render
+        
         $("#load_timer").html(millisecondsLoading);
         
+        console.log("done timing");
+        
         // check to see if the badge list container exists... if so, start loading the badges
+
         if( $("#badge_list_container" ).length > 0) {
-            loadBadges();
-        }
             
+            setTimeout(function () {
+                loadBadges();
+            }, 10);
+        }
+                
     });
+
          
 });
 
@@ -45,26 +57,21 @@ function loadBadges() {
     var template = Handlebars.compile($('#tpl-badge-list').html()),
         rendered = template(context);
                                     
-    // delay the rendering of badges
-    setTimeout(function () {
+    // paint it in the badge list container
+    $("#badge_list_container").html(rendered);
+                
+    // calculate total loading time
+    hybridEnd = (new Date()).getTime();
+    hybridMilliseconds = hybridEnd - startTime;
     
-        // paint it in the badge list container
-        $("#badge_list_container").html(rendered);
-                    
-        // calculate total loading time
-        hybridEnd = (new Date()).getTime();
-        hybridMilliseconds = hybridEnd - startTime;
-        
-        if(hybridMilliseconds >= 1000) {
-            // convert to seconds        	
-        	hybridMilliseconds = (hybridMilliseconds / 1000) + " s";
-        } 
-        else {
-        	hybridMilliseconds = hybridMilliseconds + " ms";
-        }
-        
-        $("#hb_timer").html(hybridMilliseconds);
+    if(hybridMilliseconds >= 1000) {
+        // convert to seconds        	
+    	hybridMilliseconds = (hybridMilliseconds / 1000) + " s";
+    } 
+    else {
+    	hybridMilliseconds = hybridMilliseconds + " ms";
+    }
     
-    }, 10);
-            
+    $("#hb_timer").html(hybridMilliseconds);
+    
 }
