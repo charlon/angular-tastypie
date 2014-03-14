@@ -88,6 +88,7 @@
                               <li>{{#link-to 'index'}}Home{{/link-to}}</li>
                               <li>{{#link-to 'about'}}About{{/link-to}}</li>
                               <li>{{#link-to 'test'}}Test{{/link-to}}</li>
+                              <li>{{#link-to 'badges'}}Badges{{/link-to}}</li>
                             </ul>
                             
                             <p style="color:orange;">Ember will be served inside of the orange box. All URL handling and data processing is happening using Ember.</p>
@@ -149,6 +150,30 @@
                      
                     {% endverbatim %}
                     </script> 
+                    
+                    
+                    <!-- badges page -->
+                    <script type="text/x-handlebars" id="badges">
+                    {% verbatim %}    
+                    
+                        <h3>Badges</h3>        
+                        
+                        {{!-- 
+                        <ul>
+                        {{ #each badges }}
+                            <li>
+                                <div>{{ id }}, {{ name }}
+                                <br/>description: {{ description }}</div>
+                            </li>
+                        {{/each}}
+                        </ul>
+                        
+                        --}}
+                        
+                    {% endverbatim %} 
+                    </script>
+        
+        
                        
                 </div>
                         
@@ -187,7 +212,8 @@
         
             <!-- application js (ember) -->
             <script src="{% static "js/vendor/handlebars-1.3.0.min.js" %}"></script>
-            <script src="{% static "js/vendor/ember-1.4.0.js" %}"></script>
+            <script src="{% static "js/vendor/ember-1.4.0.debug.js" %}"></script>
+            <script src="{% static "js/vendor/ember-data-1.0.0.beta.js" %}"></script>
             <script src="{% static "ember/js/app.js" %}"></script>
         
         {% endcompress %}

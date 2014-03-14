@@ -8,7 +8,6 @@ App = Ember.Application.create({
 
 /*** router **/
 
-/*clean urls*/
 App.Router.reopen({
     rootURL: '/ember',
     location: 'history' 
@@ -17,6 +16,7 @@ App.Router.reopen({
 App.Router.map(function() {
     this.route("about", { path: "/about" });
     this.route("test", { path: "/test" });
+    this.route("badges", { path: "/badges" });
 });
 
 App.AboutRoute = Ember.Route.extend({
@@ -30,3 +30,14 @@ App.TestRoute = Ember.Route.extend({
         this.render('test');
     }
 });
+
+App.BadgesRoute = Ember.Route.extend({ 
+    renderTemplate: function() {
+        this.render('badges');
+    }
+    /*model: function() {
+        return App.Badge.find();
+    }*/
+});
+
+
