@@ -16,10 +16,17 @@ App.Router.reopen({
 
 App.Router.map(function() {
     this.route("about", { path: "/about" });
+    this.route("test", { path: "/test" });
 });
 
 App.AboutRoute = Ember.Route.extend({
     renderTemplate: function() {
         this.render('about');
+    }
+});
+
+App.TestRoute = Ember.Route.extend({
+    renderTemplate: function() {
+        this.render('test');
     }
 });
