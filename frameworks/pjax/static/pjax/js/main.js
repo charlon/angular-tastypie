@@ -31,7 +31,7 @@ $(function() {
         $('#pjax-container').removeClass('hidden');
         
         // cancel showing the message when the ajax call completes.
-        //clearTimeout(loadingTimeout);
+        clearTimeout(loadingTimeout);
         
     });
     
