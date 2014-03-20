@@ -56,10 +56,10 @@ $(function() {
         // if on "badges" page when the pjax request finishes        
         if (pathname.indexOf("/pjax/badges") >= 0) {
             
-            
+            // wait 1ms before loading badges... or else pjax will wait to load entire page all at once
             setTimeout(function() {
                 loadBadges();
-            }, 100);
+            }, 1);
         }     
              
                                 
@@ -71,7 +71,7 @@ $(function() {
     });
     
     
-    // FALLBACK: handle non-pjax requests (basic get request)
+    // HANDLEBARS FALLBACK ROUTING: handle non-pjax requests (basic get request)
         
     $(document).ready(function () {
         
