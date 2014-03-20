@@ -87,7 +87,7 @@
                     
                     <p style="color:teal;">Django is serving up pages using it's standard router/view/template architecture + pushState/AJAX (PJAX). Each page request  does NOT do a full reload.</p>
                     
-                    <div id="pjax-loading" class="hidden" style="border: solid 1px teal; padding: 1em;">this template is taking longer to render...</div>      
+                    <div id="pjax-loading" class="hidden" style="border: solid 1px teal; padding: 1em;">pjax loading...</div>      
                          
                     <!-- all pjax content will render inside of this id -->
                     <div id="pjax-container" style="border: solid 1px teal; padding: 1em; position:relative;"> 
@@ -133,6 +133,7 @@
             
             <!-- application js -->
             <script src="{% static "js/vendor/jquery-pjax-1.8.0.min.js" %}"></script>
+            <script src="{% static "js/vendor/handlebars-1.3.0.min.js" %}"></script>
             <script src="{% static "pjax/js/main.js" %}"></script>
             
         {% endcompress %}

@@ -1,4 +1,5 @@
 {% extends "pjax/base.html, pjax/base_pjax.html"|pjax:request %}
+{% load templatetag_handlebars %}
 
 {% block title %}Pjax test{% endblock %}
 
@@ -12,17 +13,26 @@
 
 <p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
 
-
-<ul>
-    {% for badge in badges %}
-    <li>
-        <div>{{ badge.id }}, {{ badge.name }}
-        <br/>description: {{ badge.description }}</div>
-    </li>
-    {% endfor %}
+<div id="badge_list_container" data-badges="{{badges}}" style="border: solid 1px teal; padding: 1em; position:relative;">
+    
+    <div>handlebars loading...</div>
+    
+    <!-- hanblebars template here -->
+    {% tplhandlebars "tpl-badge-list" %}
         
-</ul>
-
-
+        <span class="label label-default" id="hb_timer" style="position:absolute; top:10px; right:10px; background:teal;"></span> 
+        
+        <ul>
+        {{ #each badges }}
+            <li>
+                <div>{{ id }}, {{ name }}
+                <br/>description: {{ description }}</div>
+            </li>
+        {{/each}}
+        </ul>
+                
+    {% endtplhandlebars %}
+    
+</div>
 
 {% endblock %}

@@ -11,16 +11,15 @@ $(function() {
         startTime = (new Date()).getTime();
     });
     
-    
     $('#pjax-container').on("pjax:send", function(e) {
         
         pathname = window.location.pathname;
         
-        // if it's taken longer than 250ms... show the loading message & hide existing content
-          loadingTimeout = setTimeout(function() {
-                $("#pjax-loading").removeClass('hidden');
-                $('#pjax-container').addClass('hidden');
-          }, 250);
+        // if PJAX is taking longer than 250ms... show the loading message & hide existing content
+        loadingTimeout = setTimeout(function() {
+            $("#pjax-loading").removeClass('hidden');
+            $('#pjax-container').addClass('hidden');
+        }, 250);
           
     });
 
@@ -51,13 +50,18 @@ $(function() {
         }
         
         $("#load_timer").html(millisecondsLoading);
-                
-        if (pathname.toLowerCase().indexOf("badges") >= 0) {
-            alert( "success" );
-        }     
         
-        console.log(pathname);
-     
+        // HANDLEBARS ROUTING
+        
+        // if on "badges" page when the pjax request finishes        
+        if (pathname.indexOf("/pjax/badges") >= 0) {
+            
+            
+            setTimeout(function() {
+                loadBadges();
+            }, 100);
+        }     
+             
                                 
     });
     
@@ -65,5 +69,58 @@ $(function() {
         // Prevent default timeout redirection behavior
         event.preventDefault();
     });
+    
+    
+    // FALLBACK: handle non-pjax requests (basic get request)
+        
+    $(document).ready(function () {
+        
+        pathname = window.location.pathname;
+        
+        if(pathname.indexOf("/pjax/badges") >= 0) {
+           //console.log("basic get requested");
+           loadBadges();
+        }
+    });
        
 });
+
+
+// HANDBLEBAR TEMPLATE FUNCTIONS    
+function loadBadges() {
+                
+    // start the timer
+    var hybridStart, hybridEnd, hybridMilliseconds;
+    hybridStart = (new Date()).getTime();    
+    
+
+    // get the badges json from the data-badges attribute
+    var badge_json = $('#badge_list_container').data('badges');
+    
+    // give context
+    var context = { badges: badge_json };
+    
+    //console.log(context);
+    
+    // compile handlebars template and render
+    var template = Handlebars.compile($('#tpl-badge-list').html()),
+        rendered = template(context);
+                                    
+    // paint it in the badge list container
+    $("#badge_list_container").html(rendered);
+                
+    // calculate total loading time
+    hybridEnd = (new Date()).getTime();
+    hybridMilliseconds = hybridEnd - hybridStart;
+    
+    if(hybridMilliseconds >= 1000) {
+        // convert to seconds        	
+    	hybridMilliseconds = (hybridMilliseconds / 1000) + " s";
+    } 
+    else {
+    	hybridMilliseconds = hybridMilliseconds + " ms";
+    }
+    
+    $("#hb_timer").html(hybridMilliseconds);
+    
+}
