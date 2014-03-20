@@ -1,21 +1,20 @@
 $(function() {
     
     var startTime, endTime, millisecondsLoading;
+    var pathname;
     
-    $(document).pjax('[data-pjax] a, a[data-pjax]', '#pjax-container',  {timeout: 10000})
-    
-    $(document).on("pjax:start", function() {
-
-        console.log("start");
+    $(document).pjax('a[data-pjax]', '#pjax-container',  {timeout: 10000})
+     
+    $('#pjax-container').on("pjax:start", function() {
         
         // start the timer on the initial pjax request
         startTime = (new Date()).getTime();
     });
     
     
-    $(document).on("pjax:send", function(e) {
+    $('#pjax-container').on("pjax:send", function(e) {
         
-        
+        pathname = window.location.pathname;
         
         // if it's taken longer than 250ms... show the loading message & hide existing content
           loadingTimeout = setTimeout(function() {
@@ -23,27 +22,21 @@ $(function() {
                 $('#pjax-container').addClass('hidden');
           }, 250);
           
-          console.log("send");
     });
 
-    $(document).on("pjax:complete", function() {
+    $('#pjax-container').on("pjax:complete", function() {
                 
         // once pjax completes... hide the loading message and make sure the content is showing    
         $("#pjax-loading").addClass('hidden');
         $('#pjax-container').removeClass('hidden');
         
         // cancel showing the message when the ajax call completes.
-        clearTimeout(loadingTimeout);
-        
-        
-        console.log("complete");
+        //clearTimeout(loadingTimeout);
         
     });
     
     
-    
-    $(document).on("pjax:end", function() {
-        console.log("end");
+    $('#pjax-container').on("pjax:end", function() {
         
         // calculate total loading time
         endTime = (new Date()).getTime();
@@ -58,12 +51,17 @@ $(function() {
         }
         
         $("#load_timer").html(millisecondsLoading);
+                
+        if (pathname.toLowerCase().indexOf("badges") >= 0) {
+            alert( "success" );
+        }     
         
-        //window.location.href = "/home";
-        
+        console.log(pathname);
+     
+                                
     });
     
-    $(document).on('pjax:timeout', function(event) {
+    $('#pjax-container').on('pjax:timeout', function(event) {
         // Prevent default timeout redirection behavior
         event.preventDefault();
     });
