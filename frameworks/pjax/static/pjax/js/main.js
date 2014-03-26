@@ -13,7 +13,7 @@ $(function() {
     
     $('#pjax-container').on("pjax:send", function(e) {
         
-        pathname = window.location.pathname;
+        
         
         // if PJAX is taking longer than 250ms... show the loading message & hide existing content
         loadingTimeout = setTimeout(function() {
@@ -51,15 +51,17 @@ $(function() {
         
         $("#load_timer").html(millisecondsLoading);
         
-        // HANDLEBARS ROUTING
+        // HANDLEBARS ROUTING FOR PJAX END
         
-        // if on "badges" page when the pjax request finishes        
+        pathname = window.location.pathname;
+        
+        // if on "badges" page      
         if (pathname.indexOf("/pjax/badges") >= 0) {
             
-            // wait 1ms before loading badges... or else pjax will wait to load entire page all at once
+            // wait 10ms before loading badges... or else pjax will wait to load entire page all at once
             setTimeout(function() {
                 loadBadges();
-            }, 1);
+            }, 10);
         }     
              
                                 
@@ -71,16 +73,25 @@ $(function() {
     });
     
     
-    // HANDLEBARS FALLBACK ROUTING: handle non-pjax requests (basic get request)
+    
         
     $(document).ready(function () {
         
+        // HANDLEBARS FALLBACK ROUTING: handle non-pjax requests (basic get request)
+        
         pathname = window.location.pathname;
         
+        // if on "badges" page
         if(pathname.indexOf("/pjax/badges") >= 0) {
-           //console.log("basic get requested");
-           loadBadges();
+           
+           // wait 10ms before loading badges... or else pjax will wait to load entire page all at once
+            setTimeout(function() {
+                loadBadges();
+            }, 10);
+            
         }
+        
+        
     });
        
 });
