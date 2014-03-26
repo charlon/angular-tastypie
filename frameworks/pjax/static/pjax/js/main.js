@@ -62,7 +62,10 @@ $(function() {
             setTimeout(function() {
                 loadBadges();
             }, 10);
-        }     
+        }
+        else if (pathname.indexOf("/pjax/test") >= 0) {
+            alert("sakjdf;lkasdfj");
+        }  
              
                                 
     });
@@ -90,6 +93,9 @@ $(function() {
             }, 10);
             
         }
+        else if (pathname.indexOf("/pjax/test") >= 0) {
+            alert("sakjdf;lkasdfj");
+        }  
         
         
     });
