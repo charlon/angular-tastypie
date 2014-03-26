@@ -9,7 +9,7 @@
 
 <h3>Badges</h3>
 
-<p style="color:teal;">That is because the view made a server-side call to the API to get the data AND pass it back to the Django template to be rendered.</p>
+<p style="color:teal;">A server-side call to the API was made to get the data AND pass it back to the Django template.</p>
 
 <p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
 
@@ -21,6 +21,8 @@
     {% tplhandlebars "tpl-badge-list" %}
         
         <span class="label label-default" id="hb_timer" style="position:absolute; top:10px; right:10px; background:teal;"></span> 
+        
+        <p style="color:teal;">A function was called after the request...to load the API data using Handlebars!</p>
         
         <ul>
         {{ #each badges }}
