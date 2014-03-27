@@ -64,8 +64,11 @@ $(function() {
             }, 10);
         }
         else if (pathname.indexOf("/pjax/test") >= 0) {
-            alert("sakjdf;lkasdfj");
-        }  
+            alert("pjax test");
+        }
+        else if (pathname.indexOf("/pjax/about") >= 0) {
+            alert("pjax about");
+        }    
              
                                 
     });
@@ -75,30 +78,29 @@ $(function() {
         event.preventDefault();
     });
     
+
+        
+    // HANDLEBARS FALLBACK ROUTING: handle non-pjax requests (basic get request)
     
+    pathname = window.location.pathname;
     
+    // if on "badges" page
+    if(pathname.indexOf("/pjax/badges") >= 0) {
+       
+       // wait 10ms before loading badges... or else pjax will wait to load entire page all at once
+        setTimeout(function() {
+            loadBadges();
+        }, 10);
         
-    $(document).ready(function () {
+    }
+    else if (pathname.indexOf("/pjax/test") >= 0) {
+        alert("no pjax test");
+    }
+    else if (pathname.indexOf("/pjax/about") >= 0) {
+        alert("no pjax about");
+    }    
         
-        // HANDLEBARS FALLBACK ROUTING: handle non-pjax requests (basic get request)
-        
-        pathname = window.location.pathname;
-        
-        // if on "badges" page
-        if(pathname.indexOf("/pjax/badges") >= 0) {
-           
-           // wait 10ms before loading badges... or else pjax will wait to load entire page all at once
-            setTimeout(function() {
-                loadBadges();
-            }, 10);
-            
-        }
-        else if (pathname.indexOf("/pjax/test") >= 0) {
-            alert("sakjdf;lkasdfj");
-        }  
-        
-        
-    });
+
        
 });
 
