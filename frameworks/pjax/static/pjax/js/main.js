@@ -5,15 +5,10 @@ $(function() {
     
     $(document).pjax('a[data-pjax]', '#pjax-container',  {timeout: 10000})
      
-    $('#pjax-container').on("pjax:start", function() {
-        
-        // start the timer on the initial pjax request
-        startTime = (new Date()).getTime();
-    });
-    
     $('#pjax-container').on("pjax:send", function(e) {
         
-        
+         // start the timer on the initial pjax request
+        startTime = (new Date()).getTime();
         
         // if PJAX is taking longer than 250ms... show the loading message & hide existing content
         loadingTimeout = setTimeout(function() {
@@ -31,11 +26,6 @@ $(function() {
         
         // cancel showing the message when the ajax call completes.
         clearTimeout(loadingTimeout);
-        
-    });
-    
-    
-    $('#pjax-container').on("pjax:end", function() {
         
         // calculate total loading time
         endTime = (new Date()).getTime();
@@ -58,21 +48,22 @@ $(function() {
         // if on "badges" page      
         if (pathname.indexOf("/pjax/badges") >= 0) {
             
-            // wait 10ms before loading badges... or else pjax will wait to load entire page all at once
+            console.log("pjax badges");
+            
+            // wait 100ms before loading badges... or else pjax will wait to load entire page all at once
             setTimeout(function() {
                 loadBadges();
-            }, 10);
+            }, 100);
         }
         else if (pathname.indexOf("/pjax/test") >= 0) {
-            alert("pjax test");
+            console.log("pjax test");
         }
         else if (pathname.indexOf("/pjax/about") >= 0) {
-            alert("pjax about");
-        }    
-             
-                                
+            console.log("pjax about");
+        }
+        
     });
-    
+        
     $('#pjax-container').on('pjax:timeout', function(event) {
         // Prevent default timeout redirection behavior
         event.preventDefault();
@@ -87,25 +78,26 @@ $(function() {
     // if on "badges" page
     if(pathname.indexOf("/pjax/badges") >= 0) {
        
-       // wait 10ms before loading badges... or else pjax will wait to load entire page all at once
+       console.log("no pjax badges");
+       
+       // wait 100ms before loading badges... or else pjax will wait to load entire page all at once
         setTimeout(function() {
             loadBadges();
-        }, 10);
+        }, 100);
         
     }
     else if (pathname.indexOf("/pjax/test") >= 0) {
-        alert("no pjax test");
+        console.log("no pjax test");
     }
     else if (pathname.indexOf("/pjax/about") >= 0) {
-        alert("no pjax about");
+        console.log("no pjax about");
     }    
-        
-
        
 });
 
 
-// HANDBLEBAR TEMPLATE FUNCTIONS    
+// HANDBLEBARS TEMPLATE FUNCTIONS    
+
 function loadBadges() {
                 
     // start the timer
@@ -141,5 +133,7 @@ function loadBadges() {
     }
     
     $("#hb_timer").html(hybridMilliseconds);
+    
+    console.log("handlebars badges");
     
 }
