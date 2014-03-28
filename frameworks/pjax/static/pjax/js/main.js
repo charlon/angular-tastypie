@@ -54,6 +54,7 @@ $(function() {
             setTimeout(function() {
                 loadBadges();
             }, 100);
+                        
         }
         else if (pathname.indexOf("/pjax/test") >= 0) {
             console.log("pjax test");
