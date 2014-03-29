@@ -144,8 +144,33 @@ function loadBadges() {
 }
 
 function loadTest() {
+
+    // start the timer
+    var badgeStart, badgeEnd, badgeMilliseconds;
+    badgeStart = (new Date()).getTime();    
     
-    $('#badge_list_test').load('/pjax/badgelist');
-    console.log("django ajax template badgelist");
+    $('#badge_list_test').load('/pjax/badgelist', function() {
+            
+        console.log("django ajax template badgelist");
+        
+        // calculate total loading time
+    
+        badgeEnd = (new Date()).getTime();
+        badgeMilliseconds = badgeEnd - badgeStart;
+        
+        if(badgeMilliseconds >= 1000) {
+            // convert to seconds        	
+        	badgeMilliseconds = (badgeMilliseconds / 1000) + " s";
+        } 
+        else {
+        	badgeMilliseconds = badgeMilliseconds + " ms";
+        }
+        
+        // display the time to render
+        
+        $("#badgelist_timer").html(badgeMilliseconds);
+
+    });
+    
     
 }
