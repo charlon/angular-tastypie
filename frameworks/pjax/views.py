@@ -8,19 +8,19 @@ import json
 
 # create your views here
 
-def index(request, template_name="pjax/index.html"):
-    return render_to_response(template_name, context_instance=RequestContext(request))
+def index(request):
+    return render_to_response('pjax/index.html', context_instance=RequestContext(request))
 
-def about(request, template_name="pjax/about.html"):
-    return render_to_response(template_name, context_instance=RequestContext(request))
+def about(request):
+    return render_to_response('pjax/about.html', context_instance=RequestContext(request))
     
-def test(request, template_name="pjax/test.html"):
-    return render_to_response(template_name, context_instance=RequestContext(request))
+def test(request):
+    return render_to_response('pjax/test.html', context_instance=RequestContext(request))
 
 # let's figure this REST stuff out
 
   
-def badges(request, template_name="pjax/badges.html"):
+def badges(request):
     
     # get the json url for badges
     badge_url = 'http://' + request.get_host() + '/api/v1/badges?format=json';
@@ -31,4 +31,4 @@ def badges(request, template_name="pjax/badges.html"):
     # turn the json into a python object
     #badge_object = json.dumps(badge_json)
        
-    return render_to_response(template_name, {'badges' : badge_json }, context_instance=RequestContext(request))
+    return render_to_response('pjax/badges.html', {'badges' : badge_json }, context_instance=RequestContext(request))
