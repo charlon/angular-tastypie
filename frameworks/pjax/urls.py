@@ -14,6 +14,9 @@ urlpatterns = patterns('',
     # /pjax/badges
     url(r'^/badges', 'pjax.views.badges'),
     
+    # /pjax/badgelist
+    url(r'^/badgelist', 'pjax.views.badgelist'),
+    
     # /pjax/anything
     url(r'^', 'pjax.views.index'),
     

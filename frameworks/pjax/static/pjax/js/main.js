@@ -3,6 +3,8 @@ $(function() {
     var startTime, endTime, millisecondsLoading;
     var pathname;
     
+    loadTest();
+    
     $(document).pjax('a[data-pjax]', '#pjax-container',  {timeout: 10000})
      
     $('#pjax-container').on("pjax:send", function(e) {
@@ -15,7 +17,7 @@ $(function() {
             $("#pjax-loading").removeClass('hidden');
             $('#pjax-container').addClass('hidden');
         }, 250);
-          
+                  
     });
 
     $('#pjax-container').on("pjax:complete", function() {
@@ -52,7 +54,8 @@ $(function() {
             
             // wait 100ms before loading badges... or else pjax will wait to load entire page all at once
             setTimeout(function() {
-                loadBadges();
+                //loadBadges();
+                loadTest();
             }, 100);
                         
         }
@@ -83,7 +86,8 @@ $(function() {
        
        // wait 100ms before loading badges... or else pjax will wait to load entire page all at once
         setTimeout(function() {
-            loadBadges();
+            //loadBadges();
+            loadTest();
         }, 100);
         
     }
@@ -136,5 +140,12 @@ function loadBadges() {
     $("#hb_timer").html(hybridMilliseconds);
     
     console.log("handlebars badges");
+    
+}
+
+function loadTest() {
+    
+    $('#badge_list_test').load('/pjax/badgelist');
+    console.log("django ajax template badgelist");
     
 }
