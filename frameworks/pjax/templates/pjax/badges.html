@@ -9,8 +9,6 @@
 
 <h3>Badges</h3>
 
-<p style="color:teal;">A server-side call to the API was made to get the data AND pass it back to the Django template.</p>
-
 <p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
 
 <div id="badge_list_container" data-badges="{{badges}}" style="border: solid 1px teal; padding: 1em; position:relative; display:none;">
@@ -36,6 +34,8 @@
     {% endtplhandlebars %}
     
 </div>
+
+<p style="color:red;">An AJAX call is being made to render a separate template/view to display the badge list below:</p>
 
 <div id="badge_list_test" style="border: solid 1px red; padding: 1em; position:relative;">
     <div style="text-align:center;color:red;"><span class="glyphicon glyphicon-refresh"></span></div>
