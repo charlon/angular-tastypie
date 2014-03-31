@@ -51,7 +51,7 @@ demoApp.config(function ($routeProvider, $locationProvider, $httpProvider) {
 demoApp.directive("loadingIndicator", function() {
     return {
         restrict : "A",
-        template: "waiting to render json...",
+        template: '<div style="text-align:center;color:#bbb;font-size:1.25em;"><i class="fa fa-refresh fa-spin"></i></div>',
         link : function(scope, element, attrs) {
             scope.$on("loading-started", function(e) {
                 element.css({"display" : ""});
