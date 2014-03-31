@@ -2,9 +2,7 @@ $(function() {
     
     var startTime, endTime, millisecondsLoading;
     var pathname;
-    
-    loadTest();
-    
+        
     $(document).pjax('a[data-pjax]', '#pjax-container',  {timeout: 10000})
      
     $('#pjax-container').on("pjax:send", function(e) {
@@ -43,7 +41,7 @@ $(function() {
         
         $("#load_timer").html(millisecondsLoading);
         
-        // HANDLEBARS ROUTING FOR PJAX END
+        // ROUTING FOR AJAX LOADED PARTIALS
         
         pathname = window.location.pathname;
         
@@ -55,7 +53,7 @@ $(function() {
             // wait 100ms before loading badges... or else pjax will wait to load entire page all at once
             setTimeout(function() {
                 //loadBadges();
-                loadTest();
+                loadBadgeList();
             }, 100);
                         
         }
@@ -75,7 +73,7 @@ $(function() {
     
 
         
-    // HANDLEBARS FALLBACK ROUTING: handle non-pjax requests (basic get request)
+    // ROUTING FALL-BACK FOR NON-PJAX REQUESTS
     
     pathname = window.location.pathname;
     
@@ -87,7 +85,7 @@ $(function() {
        // wait 100ms before loading badges... or else pjax will wait to load entire page all at once
         setTimeout(function() {
             //loadBadges();
-            loadTest();
+            loadBadgeList();
         }, 100);
         
     }
@@ -143,15 +141,15 @@ function loadBadges() {
     
 }
 
-function loadTest() {
+function loadBadgeList() {
 
     // start the timer
     var badgeStart, badgeEnd, badgeMilliseconds;
     badgeStart = (new Date()).getTime();    
     
-    $('#badge_list_test').load('/pjax/badgelist', function() {
+    $('#badge_list_test').load('/pjax/partials/badgelist', function() {
             
-        console.log("django ajax template badgelist");
+        console.log("badgelist loaded via ajax");
         
         // calculate total loading time
     

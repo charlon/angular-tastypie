@@ -49,4 +49,4 @@ def badgelist(request):
     badges = json.loads(badge_json)
     
     # turn the json into a python dict
-    return render_to_response('pjax/badgelist.html', {'badges' : badges }, context_instance=RequestContext(request))
+    return render_to_response('pjax/partials/badgelist.html', {'badges' : badges }, context_instance=RequestContext(request))
