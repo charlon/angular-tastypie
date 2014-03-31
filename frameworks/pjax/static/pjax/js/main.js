@@ -99,47 +99,7 @@ $(function() {
 });
 
 
-// HANDBLEBARS TEMPLATE FUNCTIONS    
-
-function loadBadges() {
-                
-    // start the timer
-    var hybridStart, hybridEnd, hybridMilliseconds;
-    hybridStart = (new Date()).getTime();    
-    
-
-    // get the badges json from the data-badges attribute
-    var badge_json = $('#badge_list_container').data('badges');
-    
-    // give context
-    var context = { badges: badge_json };
-    
-    //console.log(context);
-    
-    // compile handlebars template and render
-    var template = Handlebars.compile($('#tpl-badge-list').html()),
-        rendered = template(context);
-                                    
-    // paint it in the badge list container
-    $("#badge_list_container").html(rendered);
-                
-    // calculate total loading time
-    hybridEnd = (new Date()).getTime();
-    hybridMilliseconds = hybridEnd - hybridStart;
-    
-    if(hybridMilliseconds >= 1000) {
-        // convert to seconds        	
-    	hybridMilliseconds = (hybridMilliseconds / 1000) + " s";
-    } 
-    else {
-    	hybridMilliseconds = hybridMilliseconds + " ms";
-    }
-    
-    $("#hb_timer").html(hybridMilliseconds);
-    
-    console.log("handlebars badges");
-    
-}
+// PARTIAL VIEW FUNCTIONS
 
 function loadBadgeList() {
 
