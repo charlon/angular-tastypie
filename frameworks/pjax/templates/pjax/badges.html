@@ -1,0 +1,44 @@
+{% extends "pjax/base.html, pjax/base_pjax.html"|pjax:request %}
+{% load templatetag_handlebars %}
+
+{% block title %}Pjax test{% endblock %}
+
+{% block content %}
+
+<span class="label label-default" id="load_timer" style="position:absolute; top:10px; right:10px; background:teal;"></span>   
+
+<h3>Badges</h3>
+
+<p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+
+<div id="badge_list_container" data-badges="{{badges}}" style="border: solid 1px teal; padding: 1em; position:relative; display:none;">
+    
+    <div style="text-align:center;"><span class="glyphicon glyphicon-refresh"></span></div>
+    
+    <!-- hanblebars template here -->
+    {% tplhandlebars "tpl-badge-list" %}
+        
+        <span class="label label-default" id="hb_timer" style="position:absolute; top:10px; right:10px; background:teal;"></span> 
+        
+        <p style="color:teal;">A function was called after the request...to load the API data using Handlebars!</p>
+        
+        <ul>
+        {{ #each badges }}
+            <li>
+                <div>{{ id }}, {{ name }}
+                <br/>description: {{ description }}</div>
+            </li>
+        {{/each}}
+        </ul>
+                
+    {% endtplhandlebars %}
+    
+</div>
+
+<p style="color:red;">An AJAX call is made (after the initial load) to render a separate template/view to display the badge list.</p>
+
+<div id="badge_list_test" style="border: solid 1px red; padding: 1em; position:relative;">
+    <div style="text-align:center;color:red;"><span class="glyphicon glyphicon-refresh"></span></div>
+</div>
+
+{% endblock %}
