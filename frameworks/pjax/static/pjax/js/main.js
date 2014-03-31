@@ -107,7 +107,8 @@ function loadBadgeList() {
     var badgeStart, badgeEnd, badgeMilliseconds;
     badgeStart = (new Date()).getTime();    
     
-    $('#badge_list_test').load('/pjax/partials/badgelist', function() {
+    // load the badgelist partial
+    $('#badge_list_partial').load('/pjax/partials/badgelist', function() {
             
         console.log("badgelist loaded via ajax");
         
