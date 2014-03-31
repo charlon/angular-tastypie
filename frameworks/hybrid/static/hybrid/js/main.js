@@ -1,5 +1,7 @@
 $(function() {
     
+    var pathname;
+    
     // once the page has fully loaded...
     
     $(window).bind("load", function() {
@@ -21,21 +23,34 @@ $(function() {
         
         $("#load_timer").html(millisecondsLoading);
         
-        console.log("done timing");
+        // ROUTING FOR HANDLING FUNCTIONS AFTER PAGE LOADS
+    
+        pathname = window.location.pathname;
         
-        // check to see if the badge list container exists... if so, start loading the badges
-
-        if( $("#badge_list_container" ).length > 0) {
-            
-            setTimeout(function () {
+        // if on "badges" page
+        if(pathname.indexOf("/hybrid/badges") >= 0) {
+           
+            console.log("load hybrid badges");
+           
+            setTimeout(function() {
                 loadBadges();
-            }, 10);
+            }, 100);
+            
         }
+        else if (pathname.indexOf("/hybrid/test") >= 0) {
+            console.log("load hybrid test");
+        }
+        else if (pathname.indexOf("/hybrid/about") >= 0) {
+            console.log("load hybrid about");
+        }  
+    
                 
     });
 
          
 });
+
+// HANDLEBARS FUNCTIONS
 
 function loadBadges() {
     
@@ -45,14 +60,13 @@ function loadBadges() {
     var hybridStart, hybridEnd, hybridMilliseconds;
     hybridStart = (new Date()).getTime();    
     
-    console.log(hybridStart);
 
     // get the badges json from the data-badges attribute
     var badge_json = $('#badge_list_container').data('badges');
     
     // give context
     var context = { badges: badge_json };
-
+        
     // compile handlebars template and render
     var template = Handlebars.compile($('#tpl-badge-list').html()),
         rendered = template(context);
@@ -62,7 +76,7 @@ function loadBadges() {
                 
     // calculate total loading time
     hybridEnd = (new Date()).getTime();
-    hybridMilliseconds = hybridEnd - startTime;
+    hybridMilliseconds = hybridEnd - hybridStart;
     
     if(hybridMilliseconds >= 1000) {
         // convert to seconds        	
@@ -73,5 +87,7 @@ function loadBadges() {
     }
     
     $("#hb_timer").html(hybridMilliseconds);
+    
+    console.log("handlebars badges");
     
 }
