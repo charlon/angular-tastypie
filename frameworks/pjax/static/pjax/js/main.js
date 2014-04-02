@@ -94,13 +94,31 @@ $(function() {
     }
     else if (pathname.indexOf("/pjax/about") >= 0) {
         console.log("no pjax about");
-    }    
+    } 
+    
+    
+    
+    // handle clicking on load more...
+    $('#badge_list_load_more a').click(function(event) {
+        event.preventDefault();
+        console.log( "load more clicked..." );
+        
+        // hide the load more
+        $('#badge_list_load_more').hide();
+        // show the spinner 
+        $("#badge_list_loading").show();
+        
+        loadBadgeList();
+    });
+        
+    
+       
        
 });
 
 
 // PARTIAL VIEW FUNCTIONS
-
+/*
 function loadBadgeList() {
 
     // start the timer
@@ -108,7 +126,7 @@ function loadBadgeList() {
     badgeStart = (new Date()).getTime();    
     
     // load the badgelist partial
-    $('#badge_list_partial').load('/pjax/partials/badgelist', function() {
+    $('#badge_list_container').load('/pjax/partials/badgelist', function() {
             
         console.log("badgelist loaded via ajax");
         
@@ -126,10 +144,63 @@ function loadBadgeList() {
         }
         
         // display the time to render
+        $("#badge_list_timer").html(badgeMilliseconds);
         
-        $("#badgelist_timer").html(badgeMilliseconds);
+        // hide the badge loading spinner
+        $("#badge_list_loading").hide();
+        
+        
+        // handle clicking on load more...
+        $('#badge_list_load_more').on( "click", function(event) {
+            event.preventDefault();
+            alert( "Handler for .click() called." );
+        });
 
     });
     
-    
 }
+*/
+
+function loadBadgeList() {
+    
+     // start the timer
+    var badgeStart, badgeEnd, badgeMilliseconds;
+    badgeStart = (new Date()).getTime();    
+
+
+    $.get('/pjax/partials/badgelist', function(data){ 
+        
+        $(data).appendTo('#badge_list_container');
+        
+        console.log("badgelist loaded via get request");
+        
+        // calculate total loading time
+    
+        badgeEnd = (new Date()).getTime();
+        badgeMilliseconds = badgeEnd - badgeStart;
+        
+        if(badgeMilliseconds >= 1000) {
+            // convert to seconds        	
+        	badgeMilliseconds = (badgeMilliseconds / 1000) + " s";
+        } 
+        else {
+        	badgeMilliseconds = badgeMilliseconds + " ms";
+        }
+        
+        // display the time to render
+        $("#badge_list_timer").html(badgeMilliseconds);
+        
+        // show the load more..
+        $("#badge_list_load_more").show();
+        
+        // hide the badge loading spinner
+        $("#badge_list_loading").hide();
+        
+            
+    });
+
+}
+
+
+
+
