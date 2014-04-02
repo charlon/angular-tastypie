@@ -24,7 +24,7 @@ def badges(request):
 def badgelist(request):
 
     # get the json url for badges
-    badge_url = 'http://' + request.get_host() + '/api/v1/badges?format=json?&page=2';
+    badge_url = 'http://' + request.get_host() + '/api/v1/badges?format=json&page=2';
     
     # make a call to the badge api
     badge_json = urllib.urlopen(badge_url).read()
