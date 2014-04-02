@@ -29,7 +29,8 @@ def badgelist(request):
     # make a call to the badge api
     badge_json = urllib.urlopen(badge_url).read()
     
-    badges = json.dumps(badge_json)
+    data = json.loads(badge_json)
+    badges = data["results"]
     
     # turn the json into a python dict
     return render_to_response('pjax/partials/badgelist.html', {'badges' : badges }, context_instance=RequestContext(request))
