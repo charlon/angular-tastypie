@@ -42,7 +42,6 @@ $(function() {
         $("#load_timer").html(millisecondsLoading);
         
         // ROUTING FOR AJAX LOADED PARTIALS
-        
         pathname = window.location.pathname;
         
         // if on "badges" page      
@@ -64,6 +63,21 @@ $(function() {
             console.log("pjax about");
         }
         
+        
+        // LOAD MORE CLICK-EVENT    
+        $('#badge_list_load_more a').click(function(event) {
+            event.preventDefault();
+            console.log( "load more clicked..." );
+            
+            // hide the load more
+            $('#badge_list_load_more').hide();
+            // show the spinner 
+            $("#badge_list_loading").show();
+            
+            loadBadgeList();
+        });
+    
+        
     });
         
     $('#pjax-container').on('pjax:timeout', function(event) {
@@ -71,10 +85,10 @@ $(function() {
         event.preventDefault();
     });
     
-
+    
+    // ### PJAX FALLBACKS ###########
         
     // ROUTING FALL-BACK FOR NON-PJAX REQUESTS
-    
     pathname = window.location.pathname;
     
     // if on "badges" page
@@ -96,9 +110,7 @@ $(function() {
         console.log("no pjax about");
     } 
     
-    
-    
-    // handle clicking on load more...
+    //  LOAD MORE CLICK-EVENT FALLBACK FOR NON-PJAX REQUESTS
     $('#badge_list_load_more a').click(function(event) {
         event.preventDefault();
         console.log( "load more clicked..." );
