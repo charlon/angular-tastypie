@@ -179,7 +179,6 @@ function loadBadgeList() {
     var badgeStart, badgeEnd, badgeMilliseconds;
     badgeStart = (new Date()).getTime();    
 
-
     $.get('/pjax/partials/badgelist', function(data){ 
         
         $(data).appendTo('#badge_list_container');
