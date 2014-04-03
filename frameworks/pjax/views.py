@@ -22,9 +22,12 @@ def badges(request):
 
 # separate view to handle the badgelist template
 def badgelist(request):
-
-    # get the json url for badges
-    badge_url = 'http://' + request.get_host() + '/api/v1/badges?format=json&page=1';
+    
+    # get the json url to load
+    page = request.GET.get('url', None)
+     
+    #badge_url = 'http://' + request.get_host() + '/api/v1/badges?format=json&page=' + page;
+    badge_url = page
     
     # make a call to the badge api
     badge_json = urllib.urlopen(badge_url).read()
@@ -32,5 +35,7 @@ def badgelist(request):
     data = json.loads(badge_json)
     badges = data["results"]
     
+    nextpage = data["next"]
+    
     # turn the json into a python dict
-    return render_to_response('pjax/partials/badgelist.html', {'badges' : badges }, context_instance=RequestContext(request))
+    return render_to_response('pjax/partials/badgelist.html', {'badges' : badges, 'nextpage' : nextpage }, context_instance=RequestContext(request))

@@ -1,7 +1,7 @@
 $(function() {
     
     var startTime, endTime, millisecondsLoading;
-    var pathname;
+    var pathname, nextUrl;
         
     $(document).pjax('a[data-pjax]', '#pjax-container',  {timeout: 10000})
      
@@ -49,12 +49,8 @@ $(function() {
             
             console.log("pjax badges");
             
-            // wait 100ms before loading badges... or else pjax will wait to load entire page all at once
-            setTimeout(function() {
-                //loadBadges();
-                loadBadgeList();
-            }, 100);
-                        
+            loadBadgeList();
+                         
         }
         else if (pathname.indexOf("/pjax/test") >= 0) {
             console.log("pjax test");
@@ -64,17 +60,20 @@ $(function() {
         }
         
         
-        // LOAD MORE CLICK-EVENT    
+        // LOAD MORE CLICK-EVENT (SHOULD PASS NEXT)    
         $('#badge_list_load_more a').click(function(event) {
             event.preventDefault();
             console.log( "load more clicked..." );
             
+            nextUrl = $('.next-url:last').attr("data-next-url");
+            console.log(nextUrl);
+        
             // hide the load more
             $('#badge_list_load_more').hide();
             // show the spinner 
             $("#badge_list_loading").show();
             
-            loadBadgeList();
+            loadBadgeList(nextUrl);
         });
     
         
@@ -95,13 +94,9 @@ $(function() {
     if(pathname.indexOf("/pjax/badges") >= 0) {
        
        console.log("no pjax badges");
-       
-       // wait 100ms before loading badges... or else pjax will wait to load entire page all at once
-        setTimeout(function() {
-            //loadBadges();
-            loadBadgeList();
-        }, 100);
-        
+
+       loadBadgeList();
+
     }
     else if (pathname.indexOf("/pjax/test") >= 0) {
         console.log("no pjax test");
@@ -110,76 +105,37 @@ $(function() {
         console.log("no pjax about");
     } 
     
-    //  LOAD MORE CLICK-EVENT FALLBACK FOR NON-PJAX REQUESTS
+    //  LOAD MORE CLICK-EVENT (SHOULD PASS NEXT) FALLBACK FOR NON-PJAX REQUESTS
     $('#badge_list_load_more a').click(function(event) {
         event.preventDefault();
         console.log( "load more clicked..." );
         
+        nextUrl = $('.next-url:last').attr("data-next-url");
+          
         // hide the load more
         $('#badge_list_load_more').hide();
         // show the spinner 
         $("#badge_list_loading").show();
         
-        loadBadgeList();
+        loadBadgeList(nextUrl);
     });
-        
     
-       
-       
 });
 
 
-// PARTIAL VIEW FUNCTIONS
-/*
-function loadBadgeList() {
-
+function loadBadgeList(url) {
+         
     // start the timer
     var badgeStart, badgeEnd, badgeMilliseconds;
     badgeStart = (new Date()).getTime();    
-    
-    // load the badgelist partial
-    $('#badge_list_container').load('/pjax/partials/badgelist', function() {
-            
-        console.log("badgelist loaded via ajax");
-        
-        // calculate total loading time
-    
-        badgeEnd = (new Date()).getTime();
-        badgeMilliseconds = badgeEnd - badgeStart;
-        
-        if(badgeMilliseconds >= 1000) {
-            // convert to seconds        	
-        	badgeMilliseconds = (badgeMilliseconds / 1000) + " s";
-        } 
-        else {
-        	badgeMilliseconds = badgeMilliseconds + " ms";
-        }
-        
-        // display the time to render
-        $("#badge_list_timer").html(badgeMilliseconds);
-        
-        // hide the badge loading spinner
-        $("#badge_list_loading").hide();
-        
-        
-        // handle clicking on load more...
-        $('#badge_list_load_more').on( "click", function(event) {
-            event.preventDefault();
-            alert( "Handler for .click() called." );
-        });
 
-    });
-    
-}
-*/
+    if (typeof url == 'undefined'){
+        url = 'http://curry.eplt.washington.edu:8000/api/v1/badges?page=1&format=json'
+    }
 
-function loadBadgeList() {
-    
-     // start the timer
-    var badgeStart, badgeEnd, badgeMilliseconds;
-    badgeStart = (new Date()).getTime();    
+    console.log(url);
 
-    $.get('/pjax/partials/badgelist', function(data){ 
+    $.get('/pjax/partials/badgelist?url=' + url, function(data){ 
         
         $(data).appendTo('#badge_list_container');
         
@@ -201,8 +157,15 @@ function loadBadgeList() {
         // display the time to render
         $("#badge_list_timer").html(badgeMilliseconds);
         
-        // show the load more..
-        $("#badge_list_load_more").show();
+        nextUrl = $('.next-url:last').attr("data-next-url");
+        
+        // show or hide the load more based on if there is a nextURL
+        if (nextUrl == 'None'){
+            $("#badge_list_load_more").hide();
+        } 
+        else { 
+            $("#badge_list_load_more").show();
+        }
         
         // hide the badge loading spinner
         $("#badge_list_loading").hide();
