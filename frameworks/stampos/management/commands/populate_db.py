@@ -9,6 +9,8 @@ class Command(BaseCommand):
         print "This will delete all of your existing Badges - if you really want to do that, type 'delete my badges':"
 
         confirmation = raw_input("Type it: ")
+        how_many = raw_input("How many badges do you want? ")
+        how_many = int(how_many)
 
         if confirmation != "delete my badges":
             raise CommandError("I'm only going to run if you're sure you want to 'delete my badges'")
@@ -16,7 +18,7 @@ class Command(BaseCommand):
             Badge.objects.all().delete()
 
             pin = 0
-            for x in range(0, 10000):
+            for x in range(0, how_many):
                 string = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
                 name = "".join([random.choice(string) for i in range(8)])
                 description = "".join([random.choice(string) for i in range(20)])
