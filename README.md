@@ -20,6 +20,11 @@ Turn the cloned repository into a virtualenv.
 
 **Dependencies:**
 
+Optional: Install nodeenv (if you don't have node installed globally)
+
+    $ pip install nodeenv
+    $ nodenv -p
+
 Install LessCSS via Node
 
     $ npm install -g less
