@@ -127,10 +127,12 @@ function loadBadgeList(url) {
          
     // start the timer
     var badgeStart, badgeEnd, badgeMilliseconds;
-    badgeStart = (new Date()).getTime();    
+    var protocol = window.location.protocol;
+    var host = window.location.host;
+    badgeStart = (new Date()).getTime();
 
     if (typeof url == 'undefined'){
-        url = 'http://curry.eplt.washington.edu:8000/api/v1/badges?page=1&format=json'
+        url = protocol + '//' + host + '/api/v1/badges?page=1&format=json'
     }
 
     console.log(url);
