@@ -1,7 +1,7 @@
 $(function() {
     
     var startTime, endTime, millisecondsLoading;
-    var pathname, nextUrl;
+    var pathname, nextUrl, loadingTimeout;
         
     $(document).pjax('a[data-pjax]', '#pjax-container',  {timeout: 10000})
      
@@ -55,25 +55,6 @@ $(function() {
             console.log("pjax about");
         }
         
-        // LOAD MORE CLICK-EVENT  
-        $('#badge_list_load_more a').click(function(event) {
-            
-            console.log("pjax click");
-            
-            // prevent anchor's click event
-            event.preventDefault();
-     
-            // get the next set of data's url
-            nextUrl = $('.next-url:last').attr("data-next-url");
-
-            // hide the load more
-            $('#badge_list_load_more').hide();
-            // show the spinner 
-            $("#badge_list_loading").show();
-            
-            loadBadgeList(nextUrl);
-        });
-
     });
         
     $('#pjax-container').on('pjax:timeout', function(event) {
@@ -98,46 +79,31 @@ $(function() {
         console.log("no pjax about");
     } 
     
-    //  LOAD MORE CLICK-EVENT FALLBACK FOR NON-PJAX REQUESTS
-    $('#badge_list_load_more a').click(function(event) {
-        
-        console.log("non pjax click");
-        
-        // prevent anchor's click event
-        event.preventDefault();
-     
-        // get the next set of data's url
-        nextUrl = $('.next-url:last').attr("data-next-url");
-          
-        // hide the load more
-        $('#badge_list_load_more').hide();
-        
-        // show the spinner 
-        $("#badge_list_loading").show();
-        
-        loadBadgeList(nextUrl);
-    });
+
+    // ### GLOBAL EVENTS ###############
     
-    // GLOBAL LOAD MORE SCROLL-EVENT (outside of pjax container)
+    // LOAD MORE ON PAGE SCROLL
     $(window).scroll(function() {
         
-        //if($(window).scrollTop() + $(window).height() > $(document).height() - 200) {    
-        
+        // if scrolled to the bottom...
         if($(window).scrollTop() + $(window).height() == $(document).height()) {
-        
-            console.log("at the bottom!");
-            
-            // get the next set of data's url
+                    
+            // get the url for the next set of data
             nextUrl = $('.next-url:last').attr("data-next-url");
             
-            // check to see if next is none, if so return false... else load the next set of data
+            // check to see if next is none, if so return false... 
             if (nextUrl == 'None'){
                 return false;
             } 
+            // otherwise, load the next next set of data
             else {
+            
                 $('#badge_list_load_more').hide();
                 $("#badge_list_loading").show();
-                loadBadgeList(nextUrl);
+            
+                setTimeout(function() {
+                    loadBadgeList(nextUrl);
+                }, 250);
             }
         
         }

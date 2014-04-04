@@ -10,7 +10,7 @@ class BadgeList(generics.ListCreateAPIView):
 
     queryset = Badge.objects.all()
     serializer_class = BadgeSerializer
-    paginate_by = 30
+    paginate_by = 100
     
 class BadgeDetail(generics.RetrieveUpdateDestroyAPIView):
     model = Badge
