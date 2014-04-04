@@ -55,9 +55,10 @@ $(function() {
             console.log("pjax about");
         }
         
-        
-        // LOAD MORE CLICK-EVENT (SHOULD PASS NEXT)    
+        // LOAD MORE CLICK-EVENT  
         $('#badge_list_load_more a').click(function(event) {
+            
+            console.log("pjax click");
             
             // prevent anchor's click event
             event.preventDefault();
@@ -72,8 +73,7 @@ $(function() {
             
             loadBadgeList(nextUrl);
         });
-    
-        
+
     });
         
     $('#pjax-container').on('pjax:timeout', function(event) {
@@ -98,8 +98,10 @@ $(function() {
         console.log("no pjax about");
     } 
     
-    //  LOAD MORE CLICK-EVENT (SHOULD PASS NEXT) FALLBACK FOR NON-PJAX REQUESTS
+    //  LOAD MORE CLICK-EVENT FALLBACK FOR NON-PJAX REQUESTS
     $('#badge_list_load_more a').click(function(event) {
+        
+        console.log("non pjax click");
         
         // prevent anchor's click event
         event.preventDefault();
@@ -116,6 +118,32 @@ $(function() {
         loadBadgeList(nextUrl);
     });
     
+    // GLOBAL LOAD MORE SCROLL-EVENT (outside of pjax container)
+    $(window).scroll(function() {
+        
+        //if($(window).scrollTop() + $(window).height() > $(document).height() - 200) {    
+        
+        if($(window).scrollTop() + $(window).height() == $(document).height()) {
+        
+            console.log("at the bottom!");
+            
+            // get the next set of data's url
+            nextUrl = $('.next-url:last').attr("data-next-url");
+            
+            // check to see if next is none, if so return false... else load the next set of data
+            if (nextUrl == 'None'){
+                return false;
+            } 
+            else {
+                $('#badge_list_load_more').hide();
+                $("#badge_list_loading").show();
+                loadBadgeList(nextUrl);
+            }
+        
+        }
+        
+    });
+        
 });
 
 
