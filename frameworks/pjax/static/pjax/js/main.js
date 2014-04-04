@@ -98,9 +98,9 @@ $(function() {
             // otherwise, load the next next set of data
             else {
             
-                $('#badge_list_load_more').hide();
                 $("#badge_list_loading").show();
-            
+                
+                // wait a tiny bit before loading...
                 setTimeout(function() {
                     loadBadgeList(nextUrl);
                 }, 250);
@@ -146,17 +146,6 @@ function loadBadgeList(url) {
         
         // display the time to render
         $("#badge_list_timer").html(badgeMilliseconds);
-        
-        // check to see if there is a next url
-        nextUrl = $('.next-url:last').attr("data-next-url");
-        
-        // show or hide the load more based on if there is a nextURL
-        if (nextUrl == 'None'){
-            $("#badge_list_load_more").hide();
-        } 
-        else { 
-            $("#badge_list_load_more").show();
-        }
         
         // hide the badge loading spinner
         $("#badge_list_loading").hide();

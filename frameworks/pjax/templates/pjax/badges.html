@@ -11,7 +11,7 @@
 
 <p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
 
-<p style="color:red;">An AJAX call is made (after the initial load) to render a separate template/view to display the badge list.</p>
+<p style="color:red;">An AJAX call is made (after the initial load) to render a separate template/view to render the badge list. When you scroll to the bottom, the same view is called and appends the results to the list.</p>
 
 <div style="border: solid 1px red; padding: 1em; position:relative;">
     
@@ -23,9 +23,6 @@
     <!-- loading spinner -->
     <div id="badge_list_loading" style="text-align:center;color:#bbb;font-size:1.25em;"><i class="fa fa-spinner fa-spin"></i></div>
      
-    <!-- load more (convert to scroll later) -->
-    <div id="badge_list_load_more" style="text-align:right;display:none;"><a href="#">load more...</a></div>
-    
 </div>
 
 {% endblock %}
