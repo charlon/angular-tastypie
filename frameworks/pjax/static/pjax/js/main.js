@@ -1,8 +1,10 @@
 $(function() {
     
     var startTime, endTime, millisecondsLoading;
-    var pathname, nextUrl, loadingTimeout;
+    var nextUrl, loadingTimeout;
+    
     var processing_badges = false;
+    var pathname = window.location.pathname;
         
     $(document).pjax('a[data-pjax]', '#pjax-container',  {timeout: 10000})
      
@@ -65,25 +67,25 @@ $(function() {
     });
     
     
-    // ### PJAX FALLBACKS ###########
+    // ### GLOBAL LOAD EVENT (pjax fallback) ###############
+    
+    $(window).load(function() {
         
-    // ROUTING FALL-BACK FOR NON-PJAX REQUESTS
-    pathname = window.location.pathname;
-    
-    // if on "badges" page
-    if(pathname.indexOf("/pjax/badges") >= 0) {
-       console.log("non pjax test");
-       loadBadgeList();
-    }
-    else if (pathname.indexOf("/pjax/test") >= 0) {
-        console.log("non pjax test");
-    }
-    else if (pathname.indexOf("/pjax/about") >= 0) {
-        console.log("non pjax about");
-    } 
-    
+        // if on "badges" page
+        if(pathname.indexOf("/pjax/badges") >= 0) {
+           console.log("non pjax bages");
+           loadBadgeList();
+        }
+        else if (pathname.indexOf("/pjax/test") >= 0) {
+            console.log("non pjax test");
+        }
+        else if (pathname.indexOf("/pjax/about") >= 0) {
+            console.log("non pjax about");
+        }
+        
+    });
 
-    // ### GLOBAL SCROLLING EVENT ###############
+    // ### GLOBAL SCROLLING EVENT (pjax and non-pjax scrolling )###############
     
     $(window).scroll(function() {
         
