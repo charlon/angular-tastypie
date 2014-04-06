@@ -73,7 +73,7 @@ $(function() {
         
         // if on "badges" page
         if(pathname.indexOf("/pjax/badges") >= 0) {
-           console.log("non pjax bages");
+           console.log("non pjax badges");
            loadBadgeList();
         }
         else if (pathname.indexOf("/pjax/test") >= 0) {
@@ -91,7 +91,7 @@ $(function() {
         
         // if on "badges" page
         if(pathname.indexOf("/pjax/badges") >= 0) {
-                
+                            
             // if scrolled to the bottom... AND currently not processing any badge requests (bounce hack)
             if($(window).scrollTop() + $(window).height() == $(document).height() && !processing_badges) {
                         
@@ -137,17 +137,19 @@ function loadBadgeList(url) {
     
     // start the timer
     badgeStart = (new Date()).getTime();
-
+    
     // check to see if a url was passed, if not... start at the beginning
     if (typeof url == 'undefined'){
         url = protocol + '//' + host + '/api/v1/badges?page=1&format=json'
     }
-
+    
     // get the badgelist partial and pass the api url
     $.get('/pjax/partials/badgelist?url=' + url, function(data){ 
         
         // append the data to the badge container
         $(data).appendTo('#badge_list_container');
+        
+        console.log("loaded: " + url);
         
         // calculate total loading time
         badgeEnd = (new Date()).getTime();
