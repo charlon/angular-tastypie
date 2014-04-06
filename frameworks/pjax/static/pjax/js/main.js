@@ -2,6 +2,7 @@ $(function() {
     
     var startTime, endTime, millisecondsLoading;
     var pathname, nextUrl, loadingTimeout;
+    var processing_badges = false;
         
     $(document).pjax('a[data-pjax]', '#pjax-container',  {timeout: 10000})
      
@@ -46,6 +47,7 @@ $(function() {
         
         // if on "badges" page      
         if (pathname.indexOf("/pjax/badges") >= 0) {
+            console.log("pjax badges");
             loadBadgeList();
         }
         else if (pathname.indexOf("/pjax/test") >= 0) {
@@ -70,42 +72,54 @@ $(function() {
     
     // if on "badges" page
     if(pathname.indexOf("/pjax/badges") >= 0) {
+       console.log("non pjax test");
        loadBadgeList();
     }
     else if (pathname.indexOf("/pjax/test") >= 0) {
-        console.log("no pjax test");
+        console.log("non pjax test");
     }
     else if (pathname.indexOf("/pjax/about") >= 0) {
-        console.log("no pjax about");
+        console.log("non pjax about");
     } 
     
 
-    // ### GLOBAL EVENTS ###############
+    // ### GLOBAL SCROLLING EVENT ###############
     
-    // LOAD MORE ON PAGE SCROLL
     $(window).scroll(function() {
         
-        // if scrolled to the bottom...
-        if($(window).scrollTop() + $(window).height() == $(document).height()) {
-                    
-            // get the url for the next set of data
-            nextUrl = $('.next-url:last').attr("data-next-url");
-            
-            // check to see if next is none, if so return false... 
-            if (nextUrl == 'None'){
-                return false;
-            } 
-            // otherwise, load the next next set of data
-            else {
-            
-                $("#badge_list_loading").show();
+        // if on "badges" page
+        if(pathname.indexOf("/pjax/badges") >= 0) {
                 
-                // wait a tiny bit before loading...
-                setTimeout(function() {
-                    loadBadgeList(nextUrl);
-                }, 250);
+            // if scrolled to the bottom... AND currently not processing any badge requests (bounce hack)
+            if($(window).scrollTop() + $(window).height() == $(document).height() && !processing_badges) {
+                        
+                // get the url for the next set of data
+                nextUrl = $('.next-url:last').attr("data-next-url");
+                
+                console.log("next to load: " + nextUrl);
+                
+                // check to see if next is none, if so return false... 
+                if (nextUrl == 'None'){
+                    return false;
+                } 
+                // otherwise, load the next next set of data
+                else {
+                    
+                    // set processing to true so you get the next set of badges
+                    processing_badges = true;
+                    
+                    $("#badge_list_loading").show();
+                    
+                    // wait a tiny bit before loading...
+                    setTimeout(function() {
+                        loadBadgeList(nextUrl);
+                        // set processing back to false so bounce requests don't fire
+                        processing_badges = false;
+                    }, 250);
+                }
+            
             }
-        
+            
         }
         
     });
@@ -114,11 +128,12 @@ $(function() {
 
 
 function loadBadgeList(url) {
-         
-    // start the timer
+
     var badgeStart, badgeEnd, badgeMilliseconds;
     var protocol = window.location.protocol;
     var host = window.location.host;
+    
+    // start the timer
     badgeStart = (new Date()).getTime();
 
     // check to see if a url was passed, if not... start at the beginning
@@ -149,7 +164,7 @@ function loadBadgeList(url) {
         
         // hide the badge loading spinner
         $("#badge_list_loading").hide();
-            
+        
     });
 
 }
