@@ -140,7 +140,7 @@ function loadBadgeList(url) {
     
     // check to see if a url was passed, if not... start at the beginning
     if (typeof url == 'undefined'){
-        url = protocol + '//' + host + '/api/v1/badges'
+        url = protocol + '//' + host + '/api/v1/badges?page=1'
     }
     
     // render the badgelist partial for the url that was passed
