@@ -140,10 +140,10 @@ function loadBadgeList(url) {
     
     // check to see if a url was passed, if not... start at the beginning
     if (typeof url == 'undefined'){
-        url = protocol + '//' + host + '/api/v1/badges?page=1&format=json'
+        url = protocol + '//' + host + '/api/v1/badges'
     }
     
-    // get the badgelist partial and pass the api url
+    // render the badgelist partial for the url that was passed
     $.get('/pjax/partials/badgelist?url=' + url, function(data){ 
         
         // append the data to the badge container

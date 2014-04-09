@@ -36,6 +36,6 @@ def badgelist(request):
     badges = data["results"]
     
     nextpage = data["next"]
-    
+        
     # turn the json into a python dict
     return render_to_response('pjax/partials/badgelist.html', {'badges' : badges, 'nextpage' : nextpage }, context_instance=RequestContext(request))
