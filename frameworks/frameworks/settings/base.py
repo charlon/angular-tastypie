@@ -115,11 +115,6 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'pjax', 'static'),
 )
 
-
-# django compressor and less-c compiler
-
-#COMPRESS_PRECOMPILERS = (('text/less', 'lessc {infile} {outfile}'),)
-
 # django mobileesp
 
 from django_mobileesp.detector import agent

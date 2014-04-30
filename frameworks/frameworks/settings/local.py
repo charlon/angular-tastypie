@@ -10,3 +10,4 @@ STATIC_ROOT = '/tmp/'
 
 COMPRESS_OFFLINE = False
 COMPRESS_ENABLED = False
+#COMPRESS_PRECOMPILERS = (('text/less', 'lessc {infile} {outfile}'),)
