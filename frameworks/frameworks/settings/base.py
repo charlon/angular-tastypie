@@ -19,17 +19,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'ni9kzpv*6cit_-mb#1-1g3diy8j!!actv!(6h!=vi8d(wufui^'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-INTERNAL_IPS = (
-    '127.0.0.1',
-)
-
-TEMPLATE_DEBUG = True
-
-ALLOWED_HOSTS = []
-
-
 # Application definition
 
 INSTALLED_APPS = (
