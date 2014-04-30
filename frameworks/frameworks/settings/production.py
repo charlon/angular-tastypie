@@ -11,8 +11,9 @@ ALLOWED_HOSTS = ['localhost']
 # This should be a real apache served location if you're using Apache.
 STATIC_ROOT = None
 
-# django compressor and less-c compiler
+# django compressor and less-c compiler (compiles Less using LessC and translates url() paths)
 
 COMPRESS_OFFLINE = True
 COMPRESS_ENABLED = True
 COMPRESS_PRECOMPILERS = (('text/less', 'lessc {infile} {outfile}'),)
+COMPRESS_CSS_FILTERS = ['compressor.filters.css_default.CssAbsoluteFilter']

@@ -14,7 +14,6 @@ ALLOWED_HOSTS = []
 # This should be a real apache served location if you're using Apache.
 STATIC_ROOT = '/tmp/'
 
-# django compressor and less-c compiler
-
+# django compressor and less-c compiler (uses LessJS for pre-compilation)
 COMPRESS_OFFLINE = False
 COMPRESS_ENABLED = False
