@@ -5,7 +5,7 @@ from frameworks.settings.base import *
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 TEMPLATE_DEBUG = False
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost']
 
 # STATIC_ROOT is required as of Django 1.6.2
 # This should be a real apache served location if you're using Apache.
