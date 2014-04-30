@@ -21,6 +21,9 @@ SECRET_KEY = 'ni9kzpv*6cit_-mb#1-1g3diy8j!!actv!(6h!=vi8d(wufui^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+INTERNAL_IPS = (
+    '127.0.0.1',
+)
 
 TEMPLATE_DEBUG = True
 
@@ -115,7 +118,7 @@ STATICFILES_DIRS = (
 
 # django compressor and less-c compiler
 
-COMPRESS_PRECOMPILERS = (('text/less', 'lessc {infile} {outfile}'),)
+#COMPRESS_PRECOMPILERS = (('text/less', 'lessc {infile} {outfile}'),)
 
 # django mobileesp
 
