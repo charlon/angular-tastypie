@@ -6,7 +6,7 @@ import urllib
 import json
 
 
-# create your views here
+# handle page views
 
 def index(request):
     return render_to_response('turbo/index.html', context_instance=RequestContext(request))
@@ -20,7 +20,9 @@ def test(request):
 def badges(request):
     return render_to_response('turbo/badges.html', context_instance=RequestContext(request))
 
-# separate view to handle the badgelist template
+
+# handle partial views
+
 def badgelist(request):
     
     # get the json url to load

@@ -1,23 +1,7 @@
 var nextUrl, loadingTimeout;
 var processing_badges = false;
-var pathname = window.location.pathname;
+var pathname;
 
-
-// ready function for all starting actions
-var ready;
-ready = function() {
-    
-    // ready actions!
-    
-    // on the "badges" page
-    if(pathname.indexOf("/turbolinks/badges") >= 0) {
-       loadBadgeList();
-    }
-
-};
-
-$(document).ready(ready);
-$(document).on('page:load', ready);
 
 
 $(document).on('page:fetch', function() {
@@ -28,6 +12,24 @@ $(document).on('page:receive', function() {
   //$(".loading-indicator").hide();
 });
 
+
+
+// ready function for all starting actions
+var ready;
+ready = function() {
+    
+    // get the current location
+    pathname = window.location.pathname;
+    
+    // on the "badges" page
+    if(pathname.indexOf("/turbolinks/badges") >= 0) {
+       loadBadgeList();
+    }
+
+};
+
+$(document).ready(ready);
+$(document).on('page:load', ready);
 
 
 $(document).scroll(function() {
