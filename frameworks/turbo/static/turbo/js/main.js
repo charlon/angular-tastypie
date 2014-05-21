@@ -3,15 +3,6 @@ var processing_badges = false;
 var pathname = window.location.pathname;
 
 
-$(document).on('page:fetch', function() {
-  //$(".loading-indicator").show();
-});
-
-$(document).on('page:receive', function() {
-  //$(".loading-indicator").hide();
-});
-
-
 // ready function for all starting actions
 var ready;
 ready = function() {
@@ -27,6 +18,16 @@ ready = function() {
 
 $(document).ready(ready);
 $(document).on('page:load', ready);
+
+
+$(document).on('page:fetch', function() {
+  //$(".loading-indicator").show();
+});
+
+$(document).on('page:receive', function() {
+  //$(".loading-indicator").hide();
+});
+
 
 
 $(document).scroll(function() {
