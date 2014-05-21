@@ -5,3 +5,4 @@ djangorestframework
 django-templatetag-handlebars
 
 -e git+https://github.com/abztrakt/django-mobileesp/#egg=django_mobileesp
+-e git+https://github.com/dgladkov/django-turbolinks/#egg=django-turbolinks

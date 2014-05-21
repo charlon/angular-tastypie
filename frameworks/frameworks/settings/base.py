@@ -34,6 +34,7 @@ INSTALLED_APPS = (
     'easy_pjax',
     'rest_framework',
     'templatetag_handlebars',
+    'turbolinks',
     
     #apps
     'stampos',
@@ -42,6 +43,7 @@ INSTALLED_APPS = (
     #'backbone',
     'hybrid',
     'pjax',
+    'turbo',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -53,6 +55,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     
     'django_mobileesp.middleware.UserAgentDetectionMiddleware',
+    'turbolinks.middleware.TurbolinksMiddleware',
 )
 
 ROOT_URLCONF = 'frameworks.urls'
@@ -102,6 +105,7 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'backbone', 'static'),
     os.path.join(BASE_DIR, 'hybrid', 'static'),
     os.path.join(BASE_DIR, 'pjax', 'static'),
+    os.path.join(BASE_DIR, 'turbo', 'static'),
 )
 
 # django mobileesp
@@ -134,4 +138,5 @@ TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'backbone', 'templates'),
     os.path.join(BASE_DIR, 'hybrid', 'templates'),
     os.path.join(BASE_DIR, 'pjax', 'templates'),
+    os.path.join(BASE_DIR, 'turbo', 'templates'),
 )

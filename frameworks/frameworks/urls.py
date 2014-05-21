@@ -22,6 +22,9 @@ urlpatterns = patterns('',
     # route /pjax calls to the pjax app
     url(r'^pjax', include('pjax.urls')),
     
+    # route /pjax calls to the pjax app
+    url(r'^turbolinks', include('turbo.urls')),
+    
     # route / to the default index view
     url(r'^', 'frameworks.views.index'),
     
