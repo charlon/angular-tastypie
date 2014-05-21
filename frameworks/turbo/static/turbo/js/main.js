@@ -1,8 +1,18 @@
 var nextUrl, loadingTimeout;
-
 var processing_badges = false;
 var pathname = window.location.pathname;
 
+
+$(document).on('page:fetch', function() {
+  //$(".loading-indicator").show();
+});
+
+$(document).on('page:receive', function() {
+  //$(".loading-indicator").hide();
+});
+
+
+// ready function for all starting actions
 var ready;
 ready = function() {
     
@@ -19,10 +29,7 @@ $(document).ready(ready);
 $(document).on('page:load', ready);
 
 
-var scroll;
-scroll = function() {
-    
-    // scrolling actions! 
+$(document).scroll(function() {
     
     //on the "badges" page
     if(pathname.indexOf("/turbolinks/badges") >= 0) {
@@ -59,10 +66,7 @@ scroll = function() {
         
     }
     
-};
-
-$(document).scroll(scroll);
-$(document).on( 'page:scroll', scroll);
+});
         
 function loadBadgeList(url) {
 
@@ -76,7 +80,7 @@ function loadBadgeList(url) {
     }
     
     // render the badgelist partial for the url that was passed
-    $.get('/pjax/partials/badgelist?url=' + url, function(data){ 
+    $.get('/turbolinks/partials/badgelist?url=' + url, function(data){ 
         
         // append the data to the badge container
         $(data).appendTo('#badge_list_container');
