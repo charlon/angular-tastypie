@@ -6,23 +6,21 @@ var pathname = window.location.pathname;
 
 
 $(document).on('page:fetch', function() {
-  //$(".loading-indicator").show();
     
-    // start the timer on the initial pjax request
+    // start the timer on the initial turbolinks request
     startTime = (new Date()).getTime();
-        
+    
 });
 
 $(document).on('page:receive', function() {
-  //$(".loading-indicator").hide();
-});
 
+});
 
 
 // ready function for all starting actions
 var ready;
 ready = function() {
-    
+        
     // get the current location
     pathname = window.location.pathname;
     
@@ -82,7 +80,7 @@ $(document).scroll(function() {
                     loadBadgeList(nextUrl);
                     // set processing back to false so bounce requests don't fire
                     processing_badges = false;
-                }, 250);
+                }, 350);
             }
         
         }
