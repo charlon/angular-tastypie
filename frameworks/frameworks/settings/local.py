@@ -6,6 +6,7 @@ from frameworks.settings.base import *
 DEBUG = True
 INTERNAL_IPS = (
     '127.0.0.1',
+    '128.208.33.32', # curry.eplt.washington.edu
 )
 TEMPLATE_DEBUG = True
 ALLOWED_HOSTS = []
