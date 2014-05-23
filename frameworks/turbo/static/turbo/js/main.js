@@ -15,6 +15,7 @@ $(document).on('page:receive', function() {
 
 
 // ready function for all starting actions
+/***
 var ready;
 ready = function() {
         
@@ -30,6 +31,20 @@ ready = function() {
 
 $(document).ready(ready);
 $(document).on('page:load', ready);
+****/
+
+$(document).on('ready page:load', function () {
+    
+    // get the current location
+    pathname = window.location.pathname;
+            
+    // on the "badges" page
+    if(pathname.indexOf("/turbolinks/badges") >= 0) {
+       loadBadgeList();
+    }
+
+});
+
 
 $(document).scroll(function() {
     

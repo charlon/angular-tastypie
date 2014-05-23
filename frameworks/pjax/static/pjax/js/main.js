@@ -4,7 +4,7 @@ $(function() {
     var nextUrl, loadingTimeout;
     
     var processing_badges = false;
-    var pathname = window.location.pathname;
+    var pathname;
         
     $(document).pjax('a[data-pjax]', '#pjax-container',  {timeout: 10000})
      
@@ -44,20 +44,9 @@ $(function() {
         
         $("#load_timer").html(millisecondsLoading);
         
-        // ROUTING FOR AJAX LOADED PARTIALS
-        pathname = window.location.pathname;
         
-        // if on "badges" page      
-        if (pathname.indexOf("/pjax/badges") >= 0) {
-            console.log("pjax badges");
-            loadBadgeList();
-        }
-        else if (pathname.indexOf("/pjax/test") >= 0) {
-            console.log("pjax test");
-        }
-        else if (pathname.indexOf("/pjax/about") >= 0) {
-            console.log("pjax about");
-        }
+        // handle url routes
+        handleRoutes();
         
     });
         
@@ -71,17 +60,8 @@ $(function() {
     
     $(window).load(function() {
         
-        // if on "badges" page
-        if(pathname.indexOf("/pjax/badges") >= 0) {
-           console.log("non pjax badges");
-           loadBadgeList();
-        }
-        else if (pathname.indexOf("/pjax/test") >= 0) {
-            console.log("non pjax test");
-        }
-        else if (pathname.indexOf("/pjax/about") >= 0) {
-            console.log("non pjax about");
-        }
+        // handle url routes
+        handleRoutes();
         
     });
 
@@ -128,6 +108,23 @@ $(function() {
         
 });
 
+function handleRoutes() {
+    
+    // ROUTING FOR AJAX LOADED PARTIALS
+    pathname = window.location.pathname;
+        
+    // if on "badges" page
+    if(pathname.indexOf("/pjax/badges") >= 0) {
+       console.log("loaded badges");
+       loadBadgeList();
+    }
+    else if (pathname.indexOf("/pjax/test") >= 0) {
+        console.log("loaded test");
+    }
+    else if (pathname.indexOf("/pjax/about") >= 0) {
+        console.log("loaded about");
+    }
+}
 
 function loadBadgeList(url) {
 
