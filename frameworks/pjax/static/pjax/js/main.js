@@ -1,6 +1,5 @@
 $(function() {
     
-    var startTime, endTime, millisecondsLoading;
     var nextUrl, loadingTimeout;
     
     var processing_badges = false;
@@ -9,9 +8,6 @@ $(function() {
     $(document).pjax('a[data-pjax]', '#pjax-container',  {timeout: 10000})
      
     $('#pjax-container').on("pjax:send", function(e) {
-        
-         // start the timer on the initial pjax request
-        startTime = (new Date()).getTime();
         
         // if PJAX is taking longer than 250ms... show the loading message & hide existing content
         loadingTimeout = setTimeout(function() {
@@ -29,22 +25,7 @@ $(function() {
         
         // cancel showing the message when the ajax call completes.
         clearTimeout(loadingTimeout);
-        
-        // calculate total loading time
-        endTime = (new Date()).getTime();
-        millisecondsLoading = endTime - startTime;
-        
-        if(millisecondsLoading >= 1000) {
-            // convert to seconds        	
-        	millisecondsLoading = (millisecondsLoading / 1000) + " s";
-        } 
-        else {
-        	millisecondsLoading = millisecondsLoading + " ms";
-        }
-        
-        $("#load_timer").html(millisecondsLoading);
-        
-        
+                
         // handle url routes
         handleRoutes();
         
@@ -68,6 +49,8 @@ $(function() {
     // ### GLOBAL SCROLLING EVENT (pjax and non-pjax scrolling )###############
     
     $(window).scroll(function() {
+        
+        pathname = window.location.pathname;
         
         // if on "badges" page
         if(pathname.indexOf("/pjax/badges") >= 0) {
@@ -147,22 +130,7 @@ function loadBadgeList(url) {
         $(data).appendTo('#badge_list_container');
         
         console.log("loaded: " + url);
-        
-        // calculate total loading time
-        badgeEnd = (new Date()).getTime();
-        badgeMilliseconds = badgeEnd - badgeStart;
-        
-        if(badgeMilliseconds >= 1000) {
-            // convert to seconds        	
-        	badgeMilliseconds = (badgeMilliseconds / 1000) + " s";
-        } 
-        else {
-        	badgeMilliseconds = badgeMilliseconds + " ms";
-        }
-        
-        // display the time to render
-        $("#badge_list_timer").html(badgeMilliseconds);
-        
+    
         // hide the badge loading spinner
         $("#badge_list_loading").hide();
         

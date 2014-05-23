@@ -1,9 +1,7 @@
-var startTime, endTime, millisecondsLoading;
 var nextUrl, loadingTimeout;
 
 var processing_badges = false;
-var pathname = window.location.pathname;
-
+var pathname; 
 
 $(document).on('page:fetch', function() {
     
@@ -47,6 +45,9 @@ $(document).on('ready page:load', function () {
 
 
 $(document).scroll(function() {
+    
+    // get the current location
+    pathname = window.location.pathname;
     
     //on the "badges" page
     if(pathname.indexOf("/turbolinks/badges") >= 0) {
