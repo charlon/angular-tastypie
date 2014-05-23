@@ -75,6 +75,13 @@
     </head>
     <body>
         
+        <script>
+           var startTime;
+           // start the timer on initial page load
+           startTime = (new Date()).getTime();     
+           console.log("new load");   
+        </script>
+        
         <!-- wrap all content here -->
         <div id="wrap">
         
@@ -105,7 +112,7 @@
                       <li><a href="/turbolinks/badges">Badges</a></li>
                     </ul>
                     
-                    <p style="color:RoyalBlue;">Django is serving up pages using it's standard router/view/template architecture + pushState/AJAX (PJAX). Each page request  does NOT do a full reload.</p>
+                    <p style="color:RoyalBlue;">Django is serving up pages using it's standard router/view/template architecture + Turbolinks. Each page request only reloads the title and body of the requested page.</p>
                     
                     <!-- all pjax content will render inside of this id -->
                     <div style="border: solid 1px RoyalBlue; padding: 1em; position:relative;"> 
