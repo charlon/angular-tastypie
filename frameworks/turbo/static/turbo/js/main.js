@@ -11,42 +11,8 @@ $(document).on('page:receive', function() {
 });
 
 
-// ready function for all starting actions
-/***
-var ready;
-ready = function() {
-        
-    // get the current location
-    pathname = window.location.pathname;
-            
-    // on the "badges" page
-    if(pathname.indexOf("/turbolinks/badges") >= 0) {
-       loadBadgeList();
-    }
-
-};
-
-$(document).ready(ready);
-$(document).on('page:load', ready);
-****/
-
 $(document).on('ready page:load', handleRoutes);
     
-    // get the current location
-    /****
-    pathname = window.location.pathname;
-            
-    // on the "badges" page
-    if(pathname.indexOf("/turbolinks/badges") >= 0) {
-       loadBadgeList();
-    }
-    *****/
-    
-    //handleRoutes();
-
-//});
-
-
 $(document).scroll(function() {
     
     // get the current location

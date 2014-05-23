@@ -41,17 +41,9 @@ $(function() {
 }); 
     
 // ### GLOBAL LOAD EVENT (pjax fallback) ###############
-/*
-$(window).load(function() {
-    // handle url routes
-    handleRoutes();
-});
-*/
-
 $(window).load(handleRoutes);
 
 // ### GLOBAL SCROLLING EVENT (pjax and non-pjax scrolling )###############
-
 $(window).scroll(function() {
     
     pathname = window.location.pathname;
