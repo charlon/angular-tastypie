@@ -91,18 +91,33 @@ function loadBadgeList(url) {
         url = protocol + '//' + host + '/api/v1/badges?page=1'
     }
     
-    // render the badgelist partial for the url that was passed
-    $.get('/turbolinks/partials/badgelist?url=' + url, function(data){ 
-        
-        // append the data to the badge container
-        $(data).appendTo('#badge_list_container');
-        
-        console.log("loaded: " + url);
-     
-        // hide the badge loading spinner
-        $("#badge_list_loading").hide();
-        
+    // make an ajax request for the badgelist partial    
+    $.ajax({
+        type: 'GET',
+        url: '/turbolinks/partials/badgelist?url=' + url,
+        beforeSend:function(){
+            // this is where we append a loading image
+            console.log("loading...");
+            
+            // show the badge loading spinner
+            $("#badge_list_loading").show();
+        },    
+        success:function(data){
+            
+            // append the data to the badge container
+            $(data).appendTo('#badge_list_container');
+            
+            console.log("loaded: " + url);
+         
+            // hide the badge loading spinner
+            $("#badge_list_loading").hide();
+            
+        },
+        error:function() {
+            console.log("error...");
+        }
     });
+
 
 }
 
