@@ -3,13 +3,14 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
+        <title>{% block title %}{% endblock %}</title>
         <meta name="description" content="">
         <meta name="HandheldFriendly" content="True">
         <meta name="MobileOptimized" content="320">
-        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
         <meta http-equiv="cleartype" content="on">
         
+        {% load templatetag_handlebars %}
         {% load staticfiles %}
         {% load compress %}
         
@@ -34,7 +35,6 @@
     
         <!-- add google/web fonts if needed -->
        
-       
         <!-- normalize or bootstrap and mobile-first styles -->
         {% compress css %}
             <!--<link rel="stylesheet" href="{% static "css/vendor/normalize-2.1.3.css" %}">-->
@@ -44,37 +44,25 @@
             <link rel="stylesheet" href="{% static "plugin/css/developer-status.css" %}">
             
             <!-- application styles -->
-            <link rel="stylesheet" href="{% static "turbo/css/mobile.less" %}" type="text/less">
+            <link rel="stylesheet" href="{% static "handlebars/css/mobile.less" %}" type="text/less">
             {% if not request.is_mobile and not request.is_tablet %}
-            <link rel="stylesheet" href="{% static "turbo/css/desktop.less" %}" type="text/less">
+            <link rel="stylesheet" href="{% static "handlebars/css/desktop.less" %}" type="text/less">
             {% endif %}
         
         {% endcompress %}  
         
-        <!-- jquery -->
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="{% static "vendor/js/jquery-2.1.0.min.js" %}"><\/script>')</script>
-                
-        <!--  javascript -->
-        {% compress js %}
-            
-        <!-- global js -->
-        <script src="{% static "vendor/js/bootstrap-3.1.1.min.js" %}"></script>
-        <!--<script src="{% static "vendor/js/holder-2.3.1.min.js" %}"></script>-->
+        <!-- modernizr -->                
+        <!--<script src="{% static "vendor/js/modernizr-2.6.2.min.js" %}"></script>-->
         
-        <!-- application js -->
-        <script src="{% static "turbo/js/main.js" %}"></script>
-        <script src="{% static "vendor/js/turbolinks.js" %}"></script>
-        
-        {% if debug %}
-        <script src="{% static "vendor/js/less-1.7.0.min.js" %}"></script>
-        {% endif %}
-            
-        {% endcompress %}
-       
+        <script>
+           var startTime, endTime, millisecondsLoading;
+           // start the timer on initial page load
+           startTime = (new Date()).getTime();        
+        </script>
+
     </head>
     <body>
-                
+        
         <!-- wrap all content here -->
         <div id="wrap">
         
@@ -85,29 +73,32 @@
                 
                 <nav class="navbar navbar-default" role="navigation">
                     <a href="/" class="navbar-brand">Home</a>
-                    <ul class="nav navbar-nav" data-no-turbolink>
+                    <ul class="nav navbar-nav">
                       <li><a href="/handlebars">Handlebars</a></li>
                       <li><a href="/pjax">PJAX</a></li>
                       <li><a href="/turbolinks">Turbolinks</a></li>
                     </ul>
                 </nav>
                 
-                <div class="turbolinks-demo">
+                <div class="hybrid-demo">
                 
-                    <h2 style="margin-top:0;"><i class="fa fa-html5"></i> Turbolinks</h2>
+                    <h2 style="margin-top:0;">Handlebars</h2>
         
-                    <ul>
-                      <li><a href="/turbolinks">Home</a></li>
-                      <li><a href="/turbolinks/about">About</a></li>
-                      <li><a href="/turbolinks/test">Test</a></li>
-                      <li><a href="/turbolinks/badges">Badges</a></li>
+                    <ul id="hybrid_links">
+                      <li><a href="/handlebars">Home</a></li>
+                      <li><a href="/handlebars/about">About</a></li>
+                      <li><a href="/handlebars/test">Test</a></li>
+                      <li><a href="/handlebars/badges">Badges</a></li>
                     </ul>
                     
-                    <p style="color:RoyalBlue;">Django is serving up pages using it's standard router/view/template architecture + Turbolinks. Each page request only reloads the title and body of the requested page.</p>
-                    
+                    <p style="color:purple;">Django is serving up pages using it's standard router/view/template architecture. Each page request does a full page reload.</p>
+                          
                     <!-- all pjax content will render inside of this id -->
-                    <div style="border: solid 1px RoyalBlue; padding: 1em; position:relative;"> 
-                        {% block content %}{% endblock %}
+                    <div id="hybrid-content" style="border: solid 1px purple; padding: 1em; position:relative;"> 
+                    
+                    <span class="label label-default" id="load_timer" style="position:absolute; top:10px; right:10px; background:purple;"></span> 
+                                  
+                    {% block content %}{% endblock %}
                     </div>
                 
                 </div>
@@ -129,16 +120,30 @@
             </div>
         </div>
         
-        {% if debug %}
         <!-- show this in dev mode -->
         <div id="developer">
             <span class="label label-danger">
             {% if request.is_mobile %}Mobile{% elif request.is_tablet %}Tablet{% else %}Desktop{%endif %}    
             </span>
         </div>
-        {%endif %}  
         
-        
+        <!-- jquery -->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="{% static "vendor/js/jquery-2.1.0.min.js" %}"><\/script>')</script>
+                
+        <!--  javascript -->
+        {% compress js %}
+            
+            <!-- global js -->
+            <script src="{% static "vendor/js/bootstrap-3.1.1.min.js" %}"></script>
+            <!--<script src="{% static "vendor/js/holder-2.3.1.min.js" %}"></script>-->
+            
+            <!-- application js -->
+            <script src="{% static "vendor/js/handlebars-1.3.0.min.js" %}"></script>
+            
+            <script src="{% static "handlebars/js/main.js" %}"></script>
+            
+        {% endcompress %}
         
 
                 

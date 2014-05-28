@@ -17,7 +17,7 @@ urlpatterns = patterns('',
     #url(r'^backbone', include('backbone.urls')),
     
     # route /angular calls to the angular app
-    url(r'^hybrid', include('hybrid.urls')),
+    url(r'^handlebars', include('handlebars.urls')),
     
     # route /pjax calls to the pjax app
     url(r'^pjax', include('pjax.urls')),
