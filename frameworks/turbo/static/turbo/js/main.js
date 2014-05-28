@@ -114,7 +114,7 @@ function loadBadgeList(url) {
             
         },
         error:function() {
-            console.log("error...");
+            console.log("error fetching badgelist partial...");
         }
     });
 
