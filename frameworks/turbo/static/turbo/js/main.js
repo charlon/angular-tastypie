@@ -79,13 +79,9 @@ function handleRoutes() {
         
 function loadBadgeList(url) {
 
-    var badgeStart, badgeEnd, badgeMilliseconds;
     var protocol = window.location.protocol;
     var host = window.location.host;
     
-     // start the timer
-    badgeStart = (new Date()).getTime();
-
     // check to see if a url was passed, if not... start at the beginning
     if (typeof url == 'undefined'){
         url = protocol + '//' + host + '/api/v1/badges?page=1'
