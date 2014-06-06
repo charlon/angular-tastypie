@@ -103,7 +103,7 @@ function loadBadgeList(url) {
     // make an ajax request for the badgelist partial    
     $.ajax({
         type: 'GET',
-        url: '/handlebars/badges?url=' + url,
+        url: '/handlebars/partials/badgeslist?url=' + url,
         beforeSend:function(){
             // this is where we append a loading image
             console.log("loading...");
@@ -114,8 +114,8 @@ function loadBadgeList(url) {
         success:function(data){
             
             // get the badges json from the data-badges attribute
-            var badge_json = $('#badge_list_container').data('badges');
-            var nextpage_json = $('#badge_list_container').data('nextpage');
+            var badge_json = $('#data_containter').data('badges');
+            var nextpage_json = $('#data_nextpage').data('nextpage');
             
             // give context
             var context = { badges: badge_json, nextpage: nextpage_json };

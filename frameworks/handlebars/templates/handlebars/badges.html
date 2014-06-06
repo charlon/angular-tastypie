@@ -13,23 +13,12 @@
 
 
 <!-- store the badge json as a data- attribute -->
-<div id="badge_list_container" data-badges="{{badges}}" data-nextpage="{{nextpage}}" style="border: solid 1px purple; padding: 1em; position:relative;">
+<div style="border: solid 1px purple; padding: 1em; position:relative;">
     
     <div id="badge_list_loading" style="text-align:center;color:#bbb;font-size:1.25em;"><i class="fa fa-refresh fa-spin"></i></div>
     
-    <!-- hanblebars template here -->
-    {% tplhandlebars "tpl-badge-list" %}
-                
-        <ul>
-        {{ #each badges }}
-            <li>
-                <div>{{ id }}, {{ name }}
-                <br/>description: {{ description }}</div>
-            </li>
-        {{/each}}
-        </ul>
-        
-    {% endtplhandlebars %}
+    <!-- include the badgelist.html template here -->
+    {% include "handlebars/partials/badgelist.html" %}
      
 </div>
 

@@ -1,0 +1,19 @@
+{% load templatetag_handlebars %}
+
+<div id="data_containter" data-badges="{{badges}}"></div>
+
+<!-- hanblebars template here -->
+{% tplhandlebars "tpl-badge-list" %}
+            
+    <ul id="badge_list_container">
+    {{ #each badges }}
+        <li>
+            <div>{{ id }}, {{ name }}
+            <br/>description: {{ description }}</div>
+        </li>
+    {{/each}}
+    </ul>
+    
+{% endtplhandlebars %}
+
+<div id="data_nextpage" style="margin: 1em 0;" class="next-url sr-only" data-next-url="{{nextpage}}">NEXT: {{nextpage}}</div>

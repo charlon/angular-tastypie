@@ -14,6 +14,9 @@ urlpatterns = patterns('',
     # /handlebars/badges
     url(r'^/badges', 'handlebars.views.badges'),
     
+    # /handlebars/partials/badgelist
+    url(r'^/partials/badgelist', 'handlebars.views.badgelist'),
+    
     # /handlebars/anything
     url(r'^', 'handlebars.views.index'),
     
