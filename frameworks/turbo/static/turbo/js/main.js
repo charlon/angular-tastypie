@@ -62,29 +62,23 @@ function handleRoutes() {
         
     // if on "badges" page
     if(pathname.indexOf("/turbolinks/badges") >= 0) {
-       console.log("loaded badges");
+       console.log("loaded badges");       
        loadBadgeList();
     }
-    else if (pathname.indexOf("/turbolinks/test") >= 0) {
-        console.log("loaded test");
-    }
-    else if (pathname.indexOf("/turbolinks/about") >= 0) {
-        console.log("loaded about");
-    }
-    else {
-        console.log("loaded home");
-    }
+
+    
 }
 
         
 function loadBadgeList(url) {
-
+        
     var protocol = window.location.protocol;
     var host = window.location.host;
     
     // check to see if a url was passed, if not... start at the beginning
     if (typeof url == 'undefined'){
         url = protocol + '//' + host + '/api/v1/badges?page=1'
+        //url = protocol + '//' + host + '/api/v1/badges?page_size=12'
     }
     
     // make an ajax request for the badgelist partial    

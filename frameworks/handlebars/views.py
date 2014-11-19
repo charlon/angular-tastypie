@@ -27,11 +27,13 @@ def badges(request):
 
 def badgelist(request):
     
-    # get the json url to load
+     # get the json url to load
     page = request.GET.get('url', None)
      
-    #badge_url = 'http://' + request.get_host() + '/api/v1/badges?format=json&page=' + page;
+    #badge_url = 'http://' + request.get_host() + '/api/v1/badges?format=json&page=10';
     badge_url = page
+    
+    console(badge_url)
     
     # make a call to the badge api
     badge_json = urllib.urlopen(badge_url).read()

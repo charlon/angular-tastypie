@@ -24,14 +24,7 @@ $(document).ready(function() {
             }, 100);
             
         }
-        else if (pathname.indexOf("/handlebars/test") >= 0) {
-            console.log("load handlebars test");
-        }
-        else if (pathname.indexOf("/handlebars/about") >= 0) {
-            console.log("load handlebars about");
-        }  
-    
-                
+                        
     });
 
          
@@ -98,12 +91,14 @@ function loadBadgeList(url) {
         url = protocol + '//' + host + '/api/v1/badges?page=1'
     }
     
+    console.log("new url:  " + url);
+    
     console.log("start loading badges");
             
     // make an ajax request for the badgelist partial    
     $.ajax({
         type: 'GET',
-        url: '/handlebars/partials/badgeslist?url=' + url,
+        url: '/handlebars/partials/badgelist?url=' + url,
         beforeSend:function(){
             // this is where we append a loading image
             console.log("loading...");
