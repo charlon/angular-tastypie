@@ -32,10 +32,13 @@
         <meta name="apple-mobile-web-app-title" content="">
         -->
     
-        <!-- critical css  (above the fold) -->
-        <style rel="stylesheet" type="text/css">
-            body { border:2px solid RoyalBlue; }
+        <!-- critical css  (above the fold styles) -->
+        {% compress css inline %}
+        <style rel="stylesheet" type="text/less">
+            @border-color: RoyalBlue;
+            body { border:2px solid @border-color; }
         </style>
+        {% endcompress %}
          
        
     </head>
