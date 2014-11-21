@@ -35,8 +35,8 @@
         <!-- critical css  (above the fold styles) -->
         {% compress css inline %}
         <style rel="stylesheet" type="text/less">
-            @border-color: RoyalBlue;
-            body { border:2px solid @border-color; }
+            @border-color: lighten(RoyalBlue, 35%);
+            body { background: @border-color !important; }
         </style>
         {% endcompress %}
          
@@ -104,6 +104,8 @@
             {% if request.is_mobile %}Mobile{% elif request.is_tablet %}Tablet{% else %}Desktop{%endif %}    
             </span>
         </div>
+        
+        <div style="position: absolute; border-top:dotted 2px red; top: 200px; height: 2px; width: 100%; z-index: 999;">&nbsp;</div>
         {%endif %}  
         
         <!-- normalize or bootstrap and mobile-first styles -->
