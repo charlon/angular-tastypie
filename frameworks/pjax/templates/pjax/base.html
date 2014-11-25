@@ -32,10 +32,15 @@
         <meta name="apple-mobile-web-app-title" content="">
         -->
     
-        <!-- critical css  (above the fold) -->
-        <style rel="stylesheet" type="text/css">
-            body { border:2px solid teal; }
+        <!-- critical css  (above the fold styles) -->
+        {% compress css inline %}
+        <style rel="stylesheet" type="text/less">
+            @border-color: lighten(RoyalBlue, 35%);
+            body { background: @border-color !important; }
+            h1 { color: navy !important; }
+            h3 { color: blue !important; }
         </style>
+        {% endcompress %}
        
     </head>
     <body>
@@ -46,20 +51,9 @@
             <!-- begin page content -->
             <div class="container">
                 
-                <h1>Frameworks</h1>
-                
-                <nav class="navbar navbar-default" role="navigation">
-                    <a href="/" class="navbar-brand">Home</a>
-                    <ul class="nav navbar-nav">
-                      <li><a href="/handlebars">Handlebars</a></li>
-                      <li><a href="/pjax">PJAX</a></li>
-                      <li><a href="/turbolinks">Turbolinks</a></li>
-                    </ul>
-                </nav>
-                
+                <h1><i class="fa fa-html5"></i> Django-PJAX</h1>
+                                
                 <div class="pjax-demo">
-                
-                    <h2 style="margin-top:0;"><i class="fa fa-html5"></i> PJAX</h2>
         
                     <ul>
                       <li><a data-pjax href="/pjax">Home</a></li>
@@ -98,10 +92,12 @@
         
         {% if debug %}
         <!-- show this in dev mode -->
-        <div id="developer">
-            <span class="label label-danger">
-            {% if request.is_mobile %}Mobile{% elif request.is_tablet %}Tablet{% else %}Desktop{%endif %}    
-            </span>
+        <div id="dev_device">
+            <span class="label label-device">{% if request.is_mobile %}Mobile{% elif request.is_tablet %}Tablet{% else %}Desktop{%endif %}</span>
+        </div>
+        
+        <div id="dev_viewport" style="top:400px;">
+            <span class="label label-fold">The fold</span>
         </div>
         {%endif %}  
         
@@ -110,8 +106,8 @@
             <!--<link rel="stylesheet" href="{% static "css/vendor/normalize-2.1.3.css" %}">-->
             <link rel="stylesheet" href="{% static "vendor/css/bootstrap-3.1.1.min.css" %}">
             <link rel="stylesheet" href="{% static "vendor/css/font-awesome-4.0.3.min.css" %}">
-            <link rel="stylesheet" href="{% static "plugin/css/sticky-footer.css" %}">
-            <link rel="stylesheet" href="{% static "plugin/css/developer-status.css" %}">
+            <link rel="stylesheet" href="{% static "trestle/css/sticky-footer.css" %}">
+            <link rel="stylesheet" href="{% static "trestle/css/devtools.less" %}" type="text/less">
             
             <!-- application styles -->
             <link rel="stylesheet" href="{% static "pjax/css/mobile.less" %}" type="text/less">
@@ -136,6 +132,7 @@
             <!-- application js -->
             <script src="{% static "vendor/js/jquery-pjax-1.8.0.min.js" %}"></script>
             <script src="{% static "vendor/js/handlebars-1.3.0.min.js" %}"></script>
+            <script src="{% static "trestle/js/devtools.js" %}"></script>
             <script src="{% static "pjax/js/main.js" %}"></script>
             
         {% endcompress %}

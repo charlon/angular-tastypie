@@ -97,15 +97,6 @@ function handleRoutes(jQuery) {
        console.log("loaded badges");
        loadBadgeList();
     }
-    else if (pathname.indexOf("/pjax/test") >= 0) {
-        console.log("loaded test");
-    }
-    else if (pathname.indexOf("/pjax/about") >= 0) {
-        console.log("loaded about");
-    }
-    else {
-        console.log("loaded home");
-    }
 }
 
 function loadBadgeList(url) {

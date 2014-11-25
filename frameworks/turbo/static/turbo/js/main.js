@@ -1,17 +1,28 @@
 var nextUrl, loadingTimeout;
 var processing_badges = false;
 var pathname; 
+var ready;
+
+
+// turbolinks events
 
 $(document).on('page:fetch', function() {
-    
+
 });
 
 $(document).on('page:receive', function() {
 
 });
 
+$(document).on('ready page:load', function () {
+    
+    // start doing stuff...
+    handleRoutes();
+    
+});
 
-$(document).on('ready page:load', handleRoutes);
+
+/*** scroll event ********************/
     
 $(document).scroll(function() {
     
@@ -55,18 +66,18 @@ $(document).scroll(function() {
     
 });
 
+/*** functions ********************/
+
 function handleRoutes() {
     
-    // ROUTING FOR Turbolinks
+    // handle routing for turbolinks
     pathname = window.location.pathname;
         
     // if on "badges" page
     if(pathname.indexOf("/turbolinks/badges") >= 0) {
-       console.log("loaded badges");       
-       loadBadgeList();
+        console.log("loaded badges");       
+        loadBadgeList();
     }
-
-    
 }
 
         

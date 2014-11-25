@@ -3,11 +3,11 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
+        <title>{% block title %}Turbolinks test{% endblock %}</title>
         <meta name="description" content="">
         <meta name="HandheldFriendly" content="True">
         <meta name="MobileOptimized" content="320">
-        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
         <meta http-equiv="cleartype" content="on">
         
         {% load staticfiles %}
@@ -37,6 +37,8 @@
         <style rel="stylesheet" type="text/less">
             @border-color: lighten(RoyalBlue, 35%);
             body { background: @border-color !important; }
+            h1 { color: navy !important; }
+            h2 { color: blue !important; }
         </style>
         {% endcompress %}
          
@@ -50,20 +52,10 @@
             <!-- begin page content -->
             <div class="container">
                 
-                <h1>Frameworks</h1>
-                
-                <nav class="navbar navbar-default" role="navigation">
-                    <a href="/" class="navbar-brand">Home</a>
-                    <ul class="nav navbar-nav" data-no-turbolink>
-                      <li><a href="/handlebars">Handlebars</a></li>
-                      <li><a href="/turbolinks">Turbolinks</a></li>
-                    </ul>
-                </nav>
+                <h1><i class="fa fa-html5"></i> Turbolinks</h1>
                 
                 <div class="turbolinks-demo">
                 
-                    <h2 style="margin-top:0;"><i class="fa fa-html5"></i> Turbolinks</h2>
-        
                     <ul>
                       <li><a href="/turbolinks">Home</a></li>
                       <li><a href="/turbolinks/about">About</a></li>
@@ -110,7 +102,7 @@
         
         <!-- normalize or bootstrap and mobile-first styles -->
         {% compress css %}
-            <!--<link rel="stylesheet" href="{% static "css/vendor/normalize-2.1.3.css" %}">-->
+            <!--<link rel="stylesheet" href="{% static "vendor/css/normalize-2.1.3.css" %}">-->
             <link rel="stylesheet" href="{% static "vendor/css/bootstrap-3.1.1.min.css" %}">
             <link rel="stylesheet" href="{% static "vendor/css/font-awesome-4.0.3.min.css" %}">
             <link rel="stylesheet" href="{% static "trestle/css/sticky-footer.css" %}">
