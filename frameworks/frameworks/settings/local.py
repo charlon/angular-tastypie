@@ -18,6 +18,6 @@ STATIC_ROOT = '/tmp/'
 # django compressor and less-c compiler (uses LessJS for pre-compilation)
 #COMPRESSOR SETTINGS
 COMPRESS_PRECOMPILERS = (('text/less', 'lessc {infile} {outfile}'),)
-COMPRESS_ENABLED = True # True if you want to compress your development build
+COMPRESS_ENABLED = False # True if you want to compress your development build
 COMPRESS_OFFLINE = False # True if you want to compress your build offline
 COMPRESS_OUTPUT_DIR = ''
